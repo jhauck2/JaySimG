@@ -9,7 +9,7 @@ func _ready():
 	mesh = ImmediateMesh.new()
 	material.shading_mode = BaseMaterial3D.SHADING_MODE_UNSHADED
 	
-func _process(delta):
+func _process(_delta):
 	draw()
 
 func setColor(a):

@@ -27,7 +27,7 @@ func _ready() -> void:
 	pass
 
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	pass
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -160,6 +160,14 @@ func hit():
 	position = Vector3.ZERO
 	velocity = Vector3(44.7*cos(20.8*PI/180.0)*cos(1.7*PI/180.0), 44.7*sin(20.8*PI/180.0), 44.7*sin(1.7*PI/180.0))
 	omega = Vector3(0.0, 784.0*sin(2.7*PI/180.0), 784.0*cos(2.7*PI/180.0))
+	
+func hit_from_data(data : Dictionary):
+	position = Vector3(0.0, 0.05, 0.0)
+	velocity = Vector3(data["Speed"]*0.44704, 0, 0).rotated(
+					Vector3(0.0, 0.0, 1.0), data["VLA"]*PI/180.0).rotated(
+						Vector3(1.0, 0.0, 0.0), data["HLA"]*PI/180.0)
+	omega = Vector3(0.0, 0.0, data["TotalSpin"]*0.10472).rotated(Vector3(1.0, 0.0, 0.0), -data["SpinAxis"]*PI/180)
+	
 	
 func reset():
 	position = Vector3(0.0, 0.1, 0.0)
