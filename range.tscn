@@ -1,0 +1,82 @@
+[gd_scene load_steps=12 format=3 uid="uid://b1idtxfp7eoke"]
+
+[ext_resource type="Script" uid="uid://b664jppxri6ts" path="res://ball.gd" id="1_60es3"]
+[ext_resource type="Script" uid="uid://c4whkfuiysonu" path="res://range.gd" id="1_sunpe"]
+[ext_resource type="Script" uid="uid://j86sopbu1jca" path="res://ball_trail.gd" id="3_4jr3s"]
+
+[sub_resource type="Environment" id="Environment_sunpe"]
+ambient_light_color = Color(1, 1, 1, 1)
+ambient_light_energy = 16.0
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_sunpe"]
+size = Vector3(400, 10, 200)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_4jr3s"]
+albedo_color = Color(0, 0.51, 0.00849999, 1)
+metallic = 0.04
+emission_enabled = true
+emission = Color(0, 0.43, 0.2365, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_d1a0v"]
+material = SubResource("StandardMaterial3D_4jr3s")
+size = Vector3(400, 10, 200)
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_ubhqr"]
+margin = 0.06
+radius = 0.063
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_sunpe"]
+emission_enabled = true
+emission = Color(1, 1, 1, 1)
+
+[sub_resource type="SphereMesh" id="SphereMesh_rnhoh"]
+material = SubResource("StandardMaterial3D_sunpe")
+radius = 0.063
+height = 0.126
+
+[sub_resource type="ImmediateMesh" id="ImmediateMesh_d1a0v"]
+
+[node name="Range" type="Node3D"]
+script = ExtResource("1_sunpe")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_sunpe")
+
+[node name="Ground" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 190, -5, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Ground"]
+shape = SubResource("BoxShape3D_sunpe")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Ground"]
+gi_lightmap_texel_scale = 5.3232
+mesh = SubResource("BoxMesh_d1a0v")
+
+[node name="Ball" type="CharacterBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, 0)
+script = ExtResource("1_60es3")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Ball"]
+shape = SubResource("SphereShape3D_ubhqr")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Ball"]
+mesh = SubResource("SphereMesh_rnhoh")
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(0.0296662, 0, -0.99956, 0, 1, 0, 0.99956, 0, 0.0296662, -4, 2, 0)
+
+[node name="Label" type="Label" parent="."]
+offset_right = 40.0
+offset_bottom = 23.0
+text = "Distance: "
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 67.956, 49.7616, 0)
+light_energy = 16.0
+light_indirect_energy = 16.0
+
+[node name="BallTrail" type="MeshInstance3D" parent="."]
+mesh = SubResource("ImmediateMesh_d1a0v")
+script = ExtResource("3_4jr3s")
+
+[connection signal="rest" from="Ball" to="." method="_on_ball_rest"]
