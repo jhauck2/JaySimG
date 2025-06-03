@@ -71,7 +71,12 @@ func _physics_process(delta: float) -> void:
 		var Re : float = speed*radius*2.0/nu_k
 		
 		# Magnus and drag coefficients
-		var S : float = 0.5*rho*PI*radius*radius*radius*(-3.25*spin+1.99)
+		# original
+		#var S : float = 0.5*rho*PI*radius*radius*radius*(-3.25*spin+1.99)
+		#first tweak
+		var S : float = 0.5*rho*PI*radius*radius*radius*(-2.4*spin+1.75)
+		
+		
 		var Cd := 0.0 # Drag coefficient
 		if Re < 87500.0:
 			Cd = 0.000000000129*Re*Re - 0.0000259*Re + 1.50
@@ -82,9 +87,11 @@ func _physics_process(delta: float) -> void:
 		F_m = omega.cross(velocity)*S
 		# Viscous Torque
 		var Cdm := Cd/3.0
-		T_d = omega.normalized()*-0.5*Cdm*rho*A
+		#T_d = omega.normalized()*-0.5*Cdm*rho*A
+		T_d = -8.0*PI*nu*radius*radius*radius*omega
+		
 		# Drag force
-		F_d = velocity*-speed*Cd*rho*A/2.0*1.05 # *1.05 factor used to dial in distances
+		F_d = velocity*-speed*Cd*rho*A/2.0*1.3 # *1.05 factor used to dial in distances
 		
 	# Total force
 	var F : Vector3 = F_g + F_d + F_m + F_f + F_gd
