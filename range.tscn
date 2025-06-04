@@ -14,7 +14,6 @@ size = Vector3(400, 10, 200)
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_4jr3s"]
 albedo_color = Color(0, 0.51, 0.00849999, 1)
 metallic = 0.04
-emission_enabled = true
 emission = Color(0, 0.43, 0.2365, 1)
 
 [sub_resource type="BoxMesh" id="BoxMesh_d1a0v"]
@@ -26,7 +25,6 @@ margin = 0.06
 radius = 0.063
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_sunpe"]
-emission_enabled = true
 emission = Color(1, 1, 1, 1)
 
 [sub_resource type="SphereMesh" id="SphereMesh_rnhoh"]
@@ -66,9 +64,8 @@ mesh = SubResource("SphereMesh_rnhoh")
 transform = Transform3D(0.0296662, 0, -0.99956, 0, 1, 0, 0.99956, 0, 0.0296662, -4, 2, 0)
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 67.956, 49.7616, 0)
-light_energy = 16.0
-light_indirect_energy = 16.0
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 174.334, 165.881, 0)
+light_indirect_energy = 6.592
 
 [node name="BallTrail" type="MeshInstance3D" parent="."]
 mesh = SubResource("ImmediateMesh_d1a0v")
