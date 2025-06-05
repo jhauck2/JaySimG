@@ -13,8 +13,8 @@ var u_k = 0.4 # friction coefficient with the ground
 var u_kr = 0.2 # friction coefficient with the ground while rolling
 
 var rho = 1.225 # Air density (kg/m^3)
-var nu = 0.00001789 # Air Viscosity
-var nu_k = 0.0000146 # Air Kinematic Viscosity
+var mu = 0.00001802 # Air Dynamic Viscosity
+var nu = 0.00001470 # Air Kinematic Viscosity
 var nu_g = 0.0012 # Grass Viscosity (estimate somewhere between air and water)
 
 enum State {REST, FLIGHT, ROLLOUT}
@@ -68,30 +68,39 @@ func _physics_process(delta: float) -> void:
 		if speed > 0.5:
 			spin = omega.length()*radius/speed
 			
-		var Re : float = speed*radius*2.0/nu_k
+		var Re : float = rho*speed*radius*2.0/mu
 		
 		# Magnus and drag coefficients
 		# original
-		#var S : float = 0.5*rho*PI*radius*radius*radius*(-3.25*spin+1.99)
+		var S : float = 0.5*rho*A*radius*(-3.25*spin+1.99)
 		#first tweak
-		var S : float = 0.5*rho*PI*radius*radius*radius*(-2.4*spin+1.75)
+		#var S : float = 0.5*rho*A*radius*(-2.4*spin+1.75)
 		
 		
 		var Cd := 0.0 # Drag coefficient
-		if Re < 87500.0:
-			Cd = 0.000000000129*Re*Re - 0.0000259*Re + 1.50
+		# Original
+		#if Re < 50000.0:
+			#Cd = 0.6
+		#elif Re < 87500.0:
+			#Cd = 0.000000000129*Re*Re - 0.0000259*Re + 1.50
+		#else:
+			#Cd = 0.0000000000191*Re*Re - 0.0000054*Re + 0.56
+			
+		# Tweaked
+		if Re < 50000.0:
+			Cd = 0.6
+		elif Re < 87500.0:
+			Cd = 0.000000000129*Re*Re - 0.0000225*Re + 1.50
 		else:
-			Cd = 0.0000000000191*Re*Re - 0.0000054*Re + 0.56
+			Cd = 0.00000000001925*Re*Re - 0.0000052*Re + 0.56
 		
 		# Magnus force
 		F_m = omega.cross(velocity)*S
 		# Viscous Torque
-		var Cdm := Cd/3.0
-		#T_d = omega.normalized()*-0.5*Cdm*rho*A
-		T_d = -8.0*PI*nu*radius*radius*radius*omega
+		T_d = -8.0*PI*mu*radius*radius*radius*omega
 		
 		# Drag force
-		F_d = velocity*-speed*Cd*rho*A/2.0*1.3 # *1.05 factor used to dial in distances
+		F_d = velocity*-speed*Cd*rho*A/2.0
 		
 	# Total force
 	var F : Vector3 = F_g + F_d + F_m + F_f + F_gd
@@ -163,12 +172,21 @@ func bounce(vel, normal) -> Vector3:
 
 func hit():
 	# 8 iron test shot - 100 mph, 20.8 deg launch, 1.7 deg horz launch, 7494 rpm, 2.7 degree spin axis offset
+	var data : Dictionary = {"Speed": 100.0,
+	"VLA": 22.0,
+	"HLA": 1.1,
+	"TotalSpin": 6000.0,
+	"SpinAxis": 0.5}
+	
 	state = State.FLIGHT
-	position = Vector3.ZERO
-	velocity = Vector3(44.7*cos(20.8*PI/180.0)*cos(1.7*PI/180.0), 44.7*sin(20.8*PI/180.0), 44.7*sin(1.7*PI/180.0))
-	omega = Vector3(0.0, 784.0*sin(2.7*PI/180.0), 784.0*cos(2.7*PI/180.0))
+	position = Vector3(0.0, 0.05, 0.0)
+	velocity = Vector3(data["Speed"]*0.44704, 0, 0).rotated(
+					Vector3(0.0, 0.0, 1.0), data["VLA"]*PI/180.0).rotated(
+						Vector3(1.0, 0.0, 0.0), data["HLA"]*PI/180.0)
+	omega = Vector3(0.0, 0.0, data["TotalSpin"]*0.10472).rotated(Vector3(1.0, 0.0, 0.0), -data["SpinAxis"]*PI/180)
 	
 func hit_from_data(data : Dictionary):
+	state = State.FLIGHT
 	position = Vector3(0.0, 0.05, 0.0)
 	velocity = Vector3(data["Speed"]*0.44704, 0, 0).rotated(
 					Vector3(0.0, 0.0, 1.0), data["VLA"]*PI/180.0).rotated(
