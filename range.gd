@@ -11,6 +11,9 @@ var tcp_data : Array = []
 var tcp_string : String = ""
 var shot_data : Dictionary
 var apex := 0
+var resp_200 := {"Code" : 200}
+var resp_201 := {"Code": 201, "Message": "JaySimG Player Information"}
+var resp_501 := {"Code": 501, "Message": "Failure Occured"}
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -76,3 +79,14 @@ func _process(delta: float) -> void:
 
 func _on_ball_rest() -> void:
 	track_points = false
+
+
+func _on_ball_hit_success() -> void:
+	tcp_connection.poll()
+	var tcp_status : StreamPeerTCP.Status = tcp_connection.get_status()
+	if tcp_status == StreamPeerTCP.STATUS_NONE: #disconnected
+		tcp_connected = false
+		print("tcp disconnected")
+	elif tcp_status == StreamPeerTCP.STATUS_CONNECTED:
+		var resp_string = JSON.stringify(resp_200)
+		tcp_connection.put_string(JSON.stringify(resp_200))

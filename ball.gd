@@ -21,6 +21,8 @@ enum State {REST, FLIGHT, ROLLOUT}
 var state : State = State.REST
 
 signal rest
+signal hit_success
+signal hit_failure
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -192,6 +194,8 @@ func hit_from_data(data : Dictionary):
 					Vector3(0.0, 0.0, 1.0), data["VLA"]*PI/180.0).rotated(
 						Vector3(1.0, 0.0, 0.0), data["HLA"]*PI/180.0)
 	omega = Vector3(0.0, 0.0, data["TotalSpin"]*0.10472).rotated(Vector3(1.0, 0.0, 0.0), -data["SpinAxis"]*PI/180)
+	
+	emit_signal("hit_success")
 	
 	
 func reset():

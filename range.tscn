@@ -83,4 +83,5 @@ text = "Distance: "
 layout_mode = 2
 text = "Apex: "
 
+[connection signal="hit_success" from="Ball" to="." method="_on_ball_hit_success"]
 [connection signal="rest" from="Ball" to="." method="_on_ball_rest"]
