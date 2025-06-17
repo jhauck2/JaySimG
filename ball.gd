@@ -203,3 +203,7 @@ func reset():
 	velocity = Vector3.ZERO
 	omega = Vector3.ZERO
 	state = State.REST
+
+
+func _on_tcp_client_hit_ball(data: Dictionary) -> void:
+	call_deferred("hit_from_data", data)

@@ -32,3 +32,7 @@ func add_point(point: Vector3):
 
 func clear_points():
 	points = [Vector3.ZERO, Vector3.ZERO]
+
+
+func _on_tcp_client_hit_ball(_data: Dictionary) -> void:
+	call_deferred("clear_points")

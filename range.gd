@@ -22,40 +22,6 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	# TCP Server
-	if not tcp_connected:
-		tcp_connection = tcp_server.take_connection()
-		if tcp_connection:
-			print("We have a tcp connection at " + tcp_connection.get_connected_host())
-			tcp_connected = true
-	else: # read from the connection
-		tcp_connection.poll()
-		var tcp_status : StreamPeerTCP.Status = tcp_connection.get_status()
-		if tcp_status == StreamPeerTCP.STATUS_NONE: #disconnected
-			tcp_connected = false
-			print("tcp disconnected")
-		elif tcp_status == StreamPeerTCP.STATUS_CONNECTED:
-			var bytes_avail := 0
-			tcp_data = []
-			bytes_avail = tcp_connection.get_available_bytes()
-			if bytes_avail > 0:
-				tcp_data = tcp_connection.get_data(bytes_avail)
-			if tcp_data:
-				tcp_string = ""
-				for byte in tcp_data[1]:
-					tcp_string += char(byte)
-				
-				var json := JSON.new()
-				var error := json.parse(tcp_string)
-				if error == OK:
-					shot_data = json.data
-					if shot_data["ShotDataOptions"]["ContainsBallData"]:
-						$BallTrail.call_deferred("clear_points")
-						$Ball.call_deferred("hit_from_data", shot_data["BallData"])
-						track_points = true
-						$BallTrail.add_point($Ball.position)
-				
-	
 	$VBoxContainer/Label.text = "Distance: " + str(int(Vector2($Ball.position.x, $Ball.position.z).length()*1.09361)) + " yd"
 	apex = max(apex, int($Ball.position.y*1.09361))
 	$VBoxContainer/Label2.text = "Apex: " + str(apex*3) + " ft"
@@ -81,12 +47,6 @@ func _on_ball_rest() -> void:
 	track_points = false
 
 
-func _on_ball_hit_success() -> void:
-	tcp_connection.poll()
-	var tcp_status : StreamPeerTCP.Status = tcp_connection.get_status()
-	if tcp_status == StreamPeerTCP.STATUS_NONE: #disconnected
-		tcp_connected = false
-		print("tcp disconnected")
-	elif tcp_status == StreamPeerTCP.STATUS_CONNECTED:
-		var resp_string = JSON.stringify(resp_200)
-		tcp_connection.put_string(JSON.stringify(resp_200))
+func _on_tcp_client_hit_ball(_data: Dictionary) -> void:
+	track_points = true
+	$BallTrail.add_point($Ball.position)
