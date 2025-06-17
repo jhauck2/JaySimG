@@ -20,7 +20,7 @@ func _ready() -> void:
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	# TCP Server
 	if not tcp_connected:
 		tcp_connection = tcp_server.take_connection()
@@ -59,5 +59,4 @@ func _on_ball_hit_success() -> void:
 		tcp_connected = false
 		print("tcp disconnected")
 	elif tcp_status == StreamPeerTCP.STATUS_CONNECTED:
-		var resp_string = JSON.stringify(resp_200)
 		tcp_connection.put_string(JSON.stringify(resp_200))
