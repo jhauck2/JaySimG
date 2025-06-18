@@ -188,6 +188,8 @@ func hit():
 	omega = Vector3(0.0, 0.0, data["TotalSpin"]*0.10472).rotated(Vector3(1.0, 0.0, 0.0), -data["SpinAxis"]*PI/180)
 	
 func hit_from_data(data : Dictionary):
+	# TODO: check data integrity
+	# emit hit_failure signal if bad data
 	state = State.FLIGHT
 	position = Vector3(0.0, 0.05, 0.0)
 	velocity = Vector3(data["Speed"]*0.44704, 0, 0).rotated(
