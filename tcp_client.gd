@@ -59,4 +59,5 @@ func _on_ball_hit_success() -> void:
 		tcp_connected = false
 		print("tcp disconnected")
 	elif tcp_status == StreamPeerTCP.STATUS_CONNECTED:
-		tcp_connection.put_string(JSON.stringify(resp_200))
+		print(JSON.stringify(resp_200))
+		tcp_connection.put_data(JSON.stringify(resp_200).to_ascii_buffer())
