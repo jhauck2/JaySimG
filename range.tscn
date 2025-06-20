@@ -1,28 +1,40 @@
-[gd_scene load_steps=13 format=3 uid="uid://b1idtxfp7eoke"]
+[gd_scene load_steps=42 format=3 uid="uid://b1idtxfp7eoke"]
 
 [ext_resource type="Script" uid="uid://b664jppxri6ts" path="res://ball.gd" id="1_60es3"]
 [ext_resource type="Script" uid="uid://c4whkfuiysonu" path="res://range.gd" id="1_sunpe"]
 [ext_resource type="Script" uid="uid://bg5tbfjpq3flx" path="res://tcp_client.gd" id="2_d1a0v"]
 [ext_resource type="Script" uid="uid://j86sopbu1jca" path="res://ball_trail.gd" id="3_4jr3s"]
+[ext_resource type="Script" uid="uid://dw7mdljtwokuv" path="res://ball_2.gd" id="5_j4ela"]
+[ext_resource type="Script" uid="uid://b6trxtsifaelg" path="res://camera_3d.gd" id="5_ubhqr"]
+[ext_resource type="Terrain3DMaterial" uid="uid://d3dhykqdwohpi" path="res://range-materials.tres" id="6_y0j3x"]
+[ext_resource type="Terrain3DAssets" uid="uid://rmanbmtfyrmk" path="res://range-assets.tres" id="7_j4ela"]
+[ext_resource type="Script" uid="uid://c1g0lxmclum0r" path="res://addons/proton_scatter/src/scatter.gd" id="9_u000j"]
+[ext_resource type="Script" uid="uid://bvdse8u8e3y0y" path="res://addons/proton_scatter/src/stack/modifier_stack.gd" id="10_rhu38"]
+[ext_resource type="Script" uid="uid://d2bimre5dpiib" path="res://addons/proton_scatter/src/modifiers/base_modifier.gd" id="11_k5eba"]
+[ext_resource type="Script" uid="uid://bomh7dwp7wqri" path="res://addons/proton_scatter/src/modifiers/create_inside_random.gd" id="12_00y0c"]
+[ext_resource type="Script" uid="uid://ccyfcpv63xvme" path="res://addons/proton_scatter/src/modifiers/randomize_transforms.gd" id="13_cnr0w"]
+[ext_resource type="Script" uid="uid://pc4t28tti0mb" path="res://addons/proton_scatter/src/modifiers/relax.gd" id="14_7sre2"]
+[ext_resource type="Script" uid="uid://cxlrj3a3wck2g" path="res://addons/proton_scatter/src/modifiers/project_on_geometry.gd" id="15_ichrk"]
+[ext_resource type="Script" uid="uid://d3kp605lerch8" path="res://addons/proton_scatter/src/scatter_item.gd" id="16_iocb1"]
+[ext_resource type="Script" uid="uid://dl7kjbkt1a82k" path="res://addons/proton_scatter/src/modifiers/project_on_terrain3d.gd" id="16_rhu38"]
+[ext_resource type="Script" uid="uid://dgwab3tr8ytj4" path="res://addons/proton_scatter/src/scatter_shape.gd" id="17_onjvp"]
+[ext_resource type="Script" uid="uid://bx5epitjsvb0r" path="res://addons/proton_scatter/src/shapes/box_shape.gd" id="19_rhu38"]
 
 [sub_resource type="Environment" id="Environment_sunpe"]
 ambient_light_color = Color(1, 1, 1, 1)
 ambient_light_energy = 16.0
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_sunpe"]
-size = Vector3(400, 10, 200)
+[sub_resource type="SphereShape3D" id="SphereShape3D_j4ela"]
+radius = 0.063
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_4jr3s"]
-albedo_color = Color(0, 0.51, 0.00849999, 1)
-metallic = 0.04
-emission = Color(0, 0.43, 0.2365, 1)
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_4odo5"]
 
-[sub_resource type="BoxMesh" id="BoxMesh_d1a0v"]
-material = SubResource("StandardMaterial3D_4jr3s")
-size = Vector3(400, 10, 200)
+[sub_resource type="SphereMesh" id="SphereMesh_skn37"]
+material = SubResource("StandardMaterial3D_4odo5")
+radius = 0.063
+height = 0.126
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_ubhqr"]
-margin = 0.06
 radius = 0.063
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_sunpe"]
@@ -32,6 +44,142 @@ emission = Color(1, 1, 1, 1)
 material = SubResource("StandardMaterial3D_sunpe")
 radius = 0.063
 height = 0.126
+
+[sub_resource type="Resource" id="Resource_rhu38"]
+script = ExtResource("12_00y0c")
+amount = 2000
+enabled = true
+override_global_seed = false
+custom_seed = 0
+restrict_height = true
+reference_frame = 1
+
+[sub_resource type="Resource" id="Resource_cnr0w"]
+script = ExtResource("13_cnr0w")
+position = Vector3(0.15, 0.15, 0.15)
+rotation = Vector3(20, 360, 20)
+scale = Vector3(0.1, 0.1, 0.1)
+enabled = true
+override_global_seed = false
+custom_seed = 0
+restrict_height = false
+reference_frame = 2
+
+[sub_resource type="Resource" id="Resource_7sre2"]
+script = ExtResource("14_7sre2")
+iterations = 3
+offset_step = 0.2
+consecutive_step_multiplier = 0.75
+use_computeshader = true
+enabled = true
+override_global_seed = false
+custom_seed = 0
+restrict_height = true
+reference_frame = 0
+
+[sub_resource type="Resource" id="Resource_ichrk"]
+script = ExtResource("15_ichrk")
+ray_direction = Vector3(0, -1, 0)
+ray_length = 5.0
+ray_offset = 5.0
+remove_points_on_miss = false
+align_with_collision_normal = false
+max_slope = 90.0
+collision_mask = 1
+exclude_mask = 0
+enabled = true
+override_global_seed = false
+custom_seed = 0
+restrict_height = false
+reference_frame = 0
+
+[sub_resource type="Resource" id="Resource_iocb1"]
+script = ExtResource("16_rhu38")
+terrain_node = NodePath("../Terrain3D")
+align_with_collision_normal = false
+max_slope = 90.0
+enabled = true
+override_global_seed = false
+custom_seed = 0
+restrict_height = false
+reference_frame = 0
+
+[sub_resource type="Resource" id="Resource_onjvp"]
+script = ExtResource("10_rhu38")
+stack = Array[ExtResource("11_k5eba")]([SubResource("Resource_rhu38"), SubResource("Resource_cnr0w"), SubResource("Resource_7sre2"), SubResource("Resource_ichrk"), SubResource("Resource_iocb1")])
+
+[sub_resource type="Resource" id="Resource_ynxvb"]
+script = ExtResource("19_rhu38")
+size = Vector3(1149.06, 0, 20.8135)
+metadata/_custom_type_script = "uid://bx5epitjsvb0r"
+
+[sub_resource type="Resource" id="Resource_s8y13"]
+script = ExtResource("12_00y0c")
+amount = 2500
+enabled = true
+override_global_seed = false
+custom_seed = 0
+restrict_height = true
+reference_frame = 1
+
+[sub_resource type="Resource" id="Resource_ttm7d"]
+script = ExtResource("13_cnr0w")
+position = Vector3(0.15, 0.15, 0.15)
+rotation = Vector3(20, 360, 20)
+scale = Vector3(0.1, 0.1, 0.1)
+enabled = true
+override_global_seed = false
+custom_seed = 0
+restrict_height = false
+reference_frame = 2
+
+[sub_resource type="Resource" id="Resource_yoiuu"]
+script = ExtResource("14_7sre2")
+iterations = 3
+offset_step = 0.2
+consecutive_step_multiplier = 0.75
+use_computeshader = true
+enabled = true
+override_global_seed = false
+custom_seed = 0
+restrict_height = true
+reference_frame = 0
+
+[sub_resource type="Resource" id="Resource_cbbg6"]
+script = ExtResource("15_ichrk")
+ray_direction = Vector3(0, -1, 0)
+ray_length = 5.0
+ray_offset = 5.0
+remove_points_on_miss = false
+align_with_collision_normal = false
+max_slope = 90.0
+collision_mask = 1
+exclude_mask = 0
+enabled = true
+override_global_seed = false
+custom_seed = 0
+restrict_height = false
+reference_frame = 0
+
+[sub_resource type="Resource" id="Resource_k5eba"]
+script = ExtResource("16_rhu38")
+terrain_node = NodePath("../Terrain3D")
+align_with_collision_normal = false
+max_slope = 90.0
+enabled = true
+override_global_seed = false
+custom_seed = 0
+restrict_height = false
+reference_frame = 0
+
+[sub_resource type="Resource" id="Resource_ghedr"]
+script = ExtResource("10_rhu38")
+stack = Array[ExtResource("11_k5eba")]([SubResource("Resource_s8y13"), SubResource("Resource_ttm7d"), SubResource("Resource_yoiuu"), SubResource("Resource_cbbg6"), SubResource("Resource_k5eba")])
+
+[sub_resource type="Resource" id="Resource_00y0c"]
+script = ExtResource("19_rhu38")
+size = Vector3(76.5745, 1, 9.18381)
+metadata/_custom_type_script = "uid://bx5epitjsvb0r"
 
 [sub_resource type="ImmediateMesh" id="ImmediateMesh_d1a0v"]
 
@@ -44,32 +192,39 @@ script = ExtResource("2_d1a0v")
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_sunpe")
 
-[node name="Ground" type="StaticBody3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 190, -5, 0)
+[node name="Terrain3D" type="Terrain3D" parent="."]
+data_directory = "res://Terrain"
+material = ExtResource("6_y0j3x")
+assets = ExtResource("7_j4ela")
+top_level = true
+metadata/_edit_lock_ = true
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Ground"]
-shape = SubResource("BoxShape3D_sunpe")
+[node name="Ball2" type="RigidBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.34916, 0.152126, -0.0826868)
+mass = 0.046
+custom_integrator = true
+script = ExtResource("5_j4ela")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Ground"]
-gi_lightmap_texel_scale = 5.3232
-mesh = SubResource("BoxMesh_d1a0v")
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Ball2"]
+shape = SubResource("SphereShape3D_j4ela")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Ball2"]
+mesh = SubResource("SphereMesh_skn37")
+
+[node name="SpringArm3D" type="SpringArm3D" parent="Ball2"]
 
 [node name="Ball" type="CharacterBody3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
+visible = false
+floor_stop_on_slope = false
 script = ExtResource("1_60es3")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Ball"]
 shape = SubResource("SphereShape3D_ubhqr")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Ball"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.92411, 0)
 mesh = SubResource("SphereMesh_rnhoh")
-
-[node name="BallTrail" type="MeshInstance3D" parent="."]
-mesh = SubResource("ImmediateMesh_d1a0v")
-script = ExtResource("3_4jr3s")
-
-[node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(0.0296662, 0, -0.99956, 0, 1, 0, 0.99956, 0, 0.0296662, -4, 2, 0)
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 174.334, 165.881, 0)
@@ -79,16 +234,72 @@ light_indirect_energy = 6.592
 offset_right = 40.0
 offset_bottom = 40.0
 
-[node name="Label" type="Label" parent="VBoxContainer"]
+[node name="Distance" type="Label" parent="VBoxContainer"]
 layout_mode = 2
 text = "Distance: "
 
-[node name="Label2" type="Label" parent="VBoxContainer"]
+[node name="Distance2" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+text = "Distance: "
+
+[node name="Apex" type="Label" parent="VBoxContainer"]
 layout_mode = 2
 text = "Apex: "
 
+[node name="Camera3D" type="Camera3D" parent="." node_paths=PackedStringArray("target")]
+transform = Transform3D(0.0296662, 0, -0.99956, 0, 1, 0, 0.99956, 0, 0.0296662, -5.10702, 2.42616, -0.0144967)
+fov = 66.4333
+script = ExtResource("5_ubhqr")
+target = NodePath("../Ball2")
+follow_speed = 1.0
+
+[node name="Timer" type="Timer" parent="Camera3D"]
+wait_time = 2.0
+one_shot = true
+
+[node name="Trees" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.776647, 0.233954, 32.4426)
+script = ExtResource("9_u000j")
+modifier_stack = SubResource("Resource_onjvp")
+Performance/use_chunks = true
+Performance/chunk_dimensions = Vector3(15, 15, 15)
+metadata/_custom_type_script = "uid://c1g0lxmclum0r"
+
+[node name="ScatterItem" type="Node3D" parent="Trees"]
+script = ExtResource("16_iocb1")
+path = "uid://caqxfqurbp3ku"
+
+[node name="ScatterShape" type="Node3D" parent="Trees"]
+transform = Transform3D(1, 0, -2.98023e-08, 0, 1, 0, 2.98023e-08, 0, 1, 0, 0, -4.58101)
+script = ExtResource("17_onjvp")
+shape = SubResource("Resource_ynxvb")
+
+[node name="Grass" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.791898, 0.233954, -0.193824)
+script = ExtResource("9_u000j")
+modifier_stack = SubResource("Resource_ghedr")
+Performance/use_chunks = true
+Performance/chunk_dimensions = Vector3(15, 15, 15)
+metadata/_custom_type_script = "uid://c1g0lxmclum0r"
+
+[node name="ScatterItem" type="Node3D" parent="Grass"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.000500679, 0, 0.0286369)
+script = ExtResource("16_iocb1")
+path = "uid://cia3jakp3wj1d"
+
+[node name="ScatterShape" type="Node3D" parent="Grass"]
+transform = Transform3D(1, 0, -2.98023e-08, 0, 1, 0, 2.98023e-08, 0, 1, 13.6931, 0, -21.7218)
+script = ExtResource("17_onjvp")
+shape = SubResource("Resource_00y0c")
+
+[node name="BallTrail" type="MeshInstance3D" parent="."]
+mesh = SubResource("ImmediateMesh_d1a0v")
+script = ExtResource("3_4jr3s")
+
 [connection signal="hit_ball" from="TCPClient" to="." method="_on_tcp_client_hit_ball"]
-[connection signal="hit_ball" from="TCPClient" to="Ball" method="_on_tcp_client_hit_ball"]
+[connection signal="hit_ball" from="TCPClient" to="Ball2" method="_on_tcp_client_hit_ball"]
 [connection signal="hit_ball" from="TCPClient" to="BallTrail" method="_on_tcp_client_hit_ball"]
+[connection signal="hit_success" from="Ball2" to="TCPClient" method="_on_ball_2_hit_success"]
+[connection signal="rest" from="Ball2" to="." method="_on_ball_2_rest"]
 [connection signal="hit_success" from="Ball" to="TCPClient" method="_on_ball_hit_success"]
 [connection signal="rest" from="Ball" to="." method="_on_ball_rest"]

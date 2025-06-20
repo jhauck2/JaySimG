@@ -20,6 +20,14 @@ config/icon="res://icon.svg"
 window/size/viewport_width=1728
 window/size/viewport_height=972
 
+[editor_plugins]
+
+enabled=PackedStringArray("res://addons/proton_scatter/plugin.cfg", "res://addons/terrain_3d/plugin.cfg")
+
+[filesystem]
+
+import/blender/enabled=false
+
 [input]
 
 hit={

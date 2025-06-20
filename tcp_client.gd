@@ -61,3 +61,7 @@ func _on_ball_hit_success() -> void:
 	elif tcp_status == StreamPeerTCP.STATUS_CONNECTED:
 		print(JSON.stringify(resp_200))
 		tcp_connection.put_data(JSON.stringify(resp_200).to_ascii_buffer())
+
+
+func _on_ball_2_hit_success() -> void:
+	pass # Replace with function body.

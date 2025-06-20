@@ -3,13 +3,15 @@ extends MeshInstance3D
 var points : Array = [Vector3.ZERO, Vector3.ZERO]
 var color : Color = Color.RED
 var material : ORMMaterial3D = ORMMaterial3D.new()
-
+@export var ball: RigidBody3D  # Assign your ball node in the editor
 
 func _ready():
 	mesh = ImmediateMesh.new()
 	material.shading_mode = BaseMaterial3D.SHADING_MODE_UNSHADED
 	
 func _process(_delta):
+	if ball:
+		add_point(ball.global_transform.origin)
 	draw()
 
 func setColor(a):
@@ -28,6 +30,8 @@ func draw():
 
 func add_point(point: Vector3):
 	#points.append(points[-1])
+	if points.size() > 300:
+		points.pop_front()
 	points.append(point)
 
 func clear_points():

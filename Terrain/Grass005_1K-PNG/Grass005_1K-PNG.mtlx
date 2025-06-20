@@ -1,0 +1,42 @@
+<?xml version="1.0"?>
+<materialx version="1.38" fileprefix="./">
+  <standard_surface ypos="-1.879310" type="surfaceshader" xpos="6.159420" name="Grass005_1K_PNG_StandardSurface">
+    <input value="0" type="float" name="specular" />
+    <input value="1" type="float" name="coat" />
+    <input value="1, 1, 1" type="color3" name="coat_color" />
+    <input value="1" type="float" name="base" />
+    <input nodename="Grass005_1K_PNG_Color" type="color3" name="base_color" />
+    <input nodename="normalmap" type="vector3" name="normal" />
+    <input nodename="normalmap" type="vector3" name="coat_normal" />
+    <input nodename="Grass005_1K_PNG_Roughness" type="float" name="specular_roughness" />
+    <input nodename="Grass005_1K_PNG_Roughness" type="float" name="coat_roughness" />
+  </standard_surface>
+  <surfacematerial ypos="0.000000" type="material" xpos="8.695652" name="Grass005_1K_PNG">
+    <input nodename="Grass005_1K_PNG_StandardSurface" type="surfaceshader" name="surfaceshader" />
+    <input nodename="displacement" type="displacementshader" name="displacementshader" />
+  </surfacematerial>
+  <tiledimage ypos="-3.103448" type="color3" xpos="3.623188" name="Grass005_1K_PNG_Color">
+    <input value="Grass005_1K-PNG_Color.png" type="filename" colorspace="srgb_texture" name="file" />
+    <input value="1.0, 1.0" type="vector2" name="uvtiling" />
+  </tiledimage>
+  <tiledimage ypos="5.163793" type="float" xpos="3.623188" name="Grass005_1K_PNG_Displacement">
+    <input value="Grass005_1K-PNG_Displacement.png" type="filename" name="file" />
+    <input value="1.0, 1.0" type="vector2" name="uvtiling" />
+  </tiledimage>
+  <displacement ypos="1.879310" type="displacementshader" xpos="6.159420" name="displacement">
+    <input nodename="Grass005_1K_PNG_Displacement" type="float" name="displacement" />
+    <input value="1.0" type="float" name="scale" />
+  </displacement>
+  <tiledimage ypos="0.879310" type="vector3" xpos="1.086957" name="Grass005_1K_PNG_NormalGL">
+    <input value="Grass005_1K-PNG_NormalGL.png" type="filename" name="file" />
+    <input value="1.0, 1.0" type="vector2" name="uvtiling" />
+  </tiledimage>
+  <normalmap ypos="3.586207" type="vector3" xpos="3.623188" name="normalmap">
+    <input nodename="Grass005_1K_PNG_NormalGL" type="vector3" name="in" />
+    <input value="1.0" type="float" name="scale" />
+  </normalmap>
+  <tiledimage ypos="-0.413793" type="float" xpos="3.623188" name="Grass005_1K_PNG_Roughness">
+    <input value="Grass005_1K-PNG_Roughness.png" type="filename" name="file" />
+    <input value="1.0, 1.0" type="vector2" name="uvtiling" />
+  </tiledimage>
+</materialx>
