@@ -3,21 +3,12 @@ extends Node3D
 var track_points : bool = false
 var trail_timer : float = 0.0
 var trail_resolution : float = 0.1
-
-var tcp_server : TCPServer = TCPServer.new()
-var tcp_connection : StreamPeerTCP = null
-var tcp_connected : bool = false
-var tcp_data : Array = []
-var tcp_string : String = ""
-var shot_data : Dictionary
 var apex := 0
-var resp_200 := {"Code" : 200}
-var resp_201 := {"Code": 201, "Message": "JaySimG Player Information"}
-var resp_501 := {"Code": 501, "Message": "Failure Occured"}
+
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	tcp_server.listen(49152)
+	pass
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
