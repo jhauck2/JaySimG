@@ -21,8 +21,6 @@ enum State {REST, FLIGHT, ROLLOUT}
 var state : State = State.REST
 
 signal rest
-signal hit_success
-signal hit_failure
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -188,8 +186,6 @@ func hit():
 	omega = Vector3(0.0, 0.0, data["TotalSpin"]*0.10472).rotated(Vector3(1.0, 0.0, 0.0), -data["SpinAxis"]*PI/180)
 	
 func hit_from_data(data : Dictionary):
-	# TODO: check data integrity
-	# emit hit_failure signal if bad data
 	state = State.FLIGHT
 	position = Vector3(0.0, 0.05, 0.0)
 	velocity = Vector3(data["Speed"]*0.44704, 0, 0).rotated(
@@ -197,15 +193,9 @@ func hit_from_data(data : Dictionary):
 						Vector3(1.0, 0.0, 0.0), data["HLA"]*PI/180.0)
 	omega = Vector3(0.0, 0.0, data["TotalSpin"]*0.10472).rotated(Vector3(1.0, 0.0, 0.0), -data["SpinAxis"]*PI/180)
 	
-	emit_signal("hit_success")
-	
 	
 func reset():
 	position = Vector3(0.0, 0.1, 0.0)
 	velocity = Vector3.ZERO
 	omega = Vector3.ZERO
 	state = State.REST
-
-
-func _on_tcp_client_hit_ball(data: Dictionary) -> void:
-	call_deferred("hit_from_data", data)

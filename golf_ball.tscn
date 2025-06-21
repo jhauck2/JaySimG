@@ -1,0 +1,39 @@
+[gd_scene load_steps=8 format=3 uid="uid://w55fmvo7ly8g"]
+
+[ext_resource type="Script" uid="uid://bsmxwh6d6yri6" path="res://golf_ball.gd" id="1_g0ryd"]
+[ext_resource type="Script" uid="uid://b664jppxri6ts" path="res://ball.gd" id="2_y1oap"]
+[ext_resource type="Script" uid="uid://j86sopbu1jca" path="res://ball_trail.gd" id="3_1empw"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_ubhqr"]
+margin = 0.06
+radius = 0.063
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_sunpe"]
+emission = Color(1, 1, 1, 1)
+
+[sub_resource type="SphereMesh" id="SphereMesh_rnhoh"]
+material = SubResource("StandardMaterial3D_sunpe")
+radius = 0.063
+height = 0.126
+
+[sub_resource type="ImmediateMesh" id="ImmediateMesh_d1a0v"]
+
+[node name="GolfBall" type="Node3D"]
+script = ExtResource("1_g0ryd")
+
+[node name="Ball" type="CharacterBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+script = ExtResource("2_y1oap")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Ball"]
+shape = SubResource("SphereShape3D_ubhqr")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Ball"]
+mesh = SubResource("SphereMesh_rnhoh")
+
+[node name="BallTrail" type="MeshInstance3D" parent="."]
+mesh = SubResource("ImmediateMesh_d1a0v")
+skeleton = NodePath("../..")
+script = ExtResource("3_1empw")
+
+[connection signal="rest" from="Ball" to="." method="_on_ball_rest"]

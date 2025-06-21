@@ -52,7 +52,7 @@ func _process(_delta: float) -> void:
 						emit_signal("hit_ball", shot_data["BallData"])
 
 
-func _on_ball_hit_success() -> void:
+func _on_golf_ball_good_data() -> void:
 	tcp_connection.poll()
 	var tcp_status : StreamPeerTCP.Status = tcp_connection.get_status()
 	if tcp_status == StreamPeerTCP.STATUS_NONE: #disconnected
