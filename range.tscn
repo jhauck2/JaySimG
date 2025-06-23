@@ -49,20 +49,8 @@ transform = Transform3D(0.0296662, 0, -0.99956, 0, 1, 0, 0.99956, 0, 0.0296662, 
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 174.334, 165.881, 0)
 light_indirect_energy = 6.592
 
-[node name="VBoxContainer" type="VBoxContainer" parent="."]
-visible = false
-offset_right = 40.0
-offset_bottom = 40.0
-
-[node name="Label" type="Label" parent="VBoxContainer"]
-layout_mode = 2
-text = "Distance: "
-
-[node name="Label2" type="Label" parent="VBoxContainer"]
-layout_mode = 2
-text = "Apex: "
-
 [node name="RangeUI" parent="." instance=ExtResource("4_d1a0v")]
 
+[connection signal="hit_ball" from="TCPClient" to="." method="_on_tcp_client_hit_ball"]
 [connection signal="hit_ball" from="TCPClient" to="GolfBall" method="_on_tcp_client_hit_ball"]
 [connection signal="good_data" from="GolfBall" to="TCPClient" method="_on_golf_ball_good_data"]

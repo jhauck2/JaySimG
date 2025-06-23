@@ -11,17 +11,20 @@ func _ready() -> void:
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	pass
 
 
-func set_label(label: String):
-	$VBoxContainer/Label.text = label
+func set_label(l: String):
+	label = l
+	$VBoxContainer/Label.text = l
 	
 
 func set_data(value: String):
+	data = value
 	$VBoxContainer/Data.text = value
 	
 
-func set_units(units: String):
+func set_units(u: String):
+	units = u
 	$VBoxContainer/Units.text = units

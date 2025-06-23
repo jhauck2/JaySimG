@@ -36,14 +36,24 @@ func _process(delta: float) -> void:
 
 func get_distance() -> int:
 	return int(Vector2($Ball.position.x, $Ball.position.z).length()*1.09361)
+	
+func get_offline() -> int:
+	return int($Ball.position.z)
 
 func validate_data(data) -> bool:
 	# TODO: implement data validation
-	return true
+	if data:
+		return true
+	else:
+		return false
 
 
 func _on_ball_rest() -> void:
 	track_points = false
+
+
+func get_ball_state():
+	return $Ball.state
 
 
 func _on_tcp_client_hit_ball(data: Dictionary) -> void:
@@ -52,7 +62,8 @@ func _on_tcp_client_hit_ball(data: Dictionary) -> void:
 		emit_signal("good_data")
 	else:
 		emit_signal("bad_data")
-		
+		return
+	
 	track_points = true
 	apex = 0
 	$BallTrail.call_deferred("clear_points")

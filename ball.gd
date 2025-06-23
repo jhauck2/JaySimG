@@ -17,8 +17,7 @@ var mu = 0.00001802 # Air Dynamic Viscosity
 var nu = 0.00001470 # Air Kinematic Viscosity
 var nu_g = 0.0012 # Grass Viscosity (estimate somewhere between air and water)
 
-enum State {REST, FLIGHT, ROLLOUT}
-var state : State = State.REST
+var state : Enums.BallState = Enums.BallState.REST
 
 signal rest
 
@@ -119,12 +118,15 @@ func _physics_process(delta: float) -> void:
 			velocity = bounce(velocity, collision.get_normal())
 		else:
 			velocity = Vector3.ZERO
-			state = State.REST
+			state = Enums.BallState.REST
 			emit_signal("rest")
 			
 
 
 func bounce(vel, normal) -> Vector3:
+	if state == Enums.BallState.FLIGHT:
+		state = Enums.BallState.ROLLOUT
+		
 	# component of velocity parallel to floor normal
 	var vel_norm : Vector3 = vel.project(normal)
 	var speed_norm : float = vel_norm.length()
@@ -178,7 +180,7 @@ func hit():
 	"TotalSpin": 6000.0,
 	"SpinAxis": 0.5}
 	
-	state = State.FLIGHT
+	state = Enums.BallState.FLIGHT
 	position = Vector3(0.0, 0.05, 0.0)
 	velocity = Vector3(data["Speed"]*0.44704, 0, 0).rotated(
 					Vector3(0.0, 0.0, 1.0), data["VLA"]*PI/180.0).rotated(
@@ -186,7 +188,7 @@ func hit():
 	omega = Vector3(0.0, 0.0, data["TotalSpin"]*0.10472).rotated(Vector3(1.0, 0.0, 0.0), -data["SpinAxis"]*PI/180)
 	
 func hit_from_data(data : Dictionary):
-	state = State.FLIGHT
+	state = Enums.BallState.FLIGHT
 	position = Vector3(0.0, 0.05, 0.0)
 	velocity = Vector3(data["Speed"]*0.44704, 0, 0).rotated(
 					Vector3(0.0, 0.0, 1.0), data["VLA"]*PI/180.0).rotated(
@@ -198,4 +200,4 @@ func reset():
 	position = Vector3(0.0, 0.1, 0.0)
 	velocity = Vector3.ZERO
 	omega = Vector3.ZERO
-	state = State.REST
+	state = Enums.BallState.REST
