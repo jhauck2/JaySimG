@@ -1,0 +1,47 @@
+[gd_scene load_steps=2 format=3 uid="uid://da1vsfwmbk8vw"]
+
+[ext_resource type="PackedScene" uid="uid://bxqjwaed60ykh" path="res://data_panel.tscn" id="1_q72xt"]
+
+[node name="RangeUI" type="MarginContainer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_vertical = 3
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+custom_minimum_size = Vector2(120, 0)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 4
+
+[node name="Distance" parent="VBoxContainer" instance=ExtResource("1_q72xt")]
+layout_mode = 2
+label = "Distance"
+units = "yd"
+
+[node name="Carry" parent="VBoxContainer" instance=ExtResource("1_q72xt")]
+layout_mode = 2
+label = "Carry"
+units = "yd"
+
+[node name="Offline" parent="VBoxContainer" instance=ExtResource("1_q72xt")]
+layout_mode = 2
+label = "Offline"
+units = "yd"
+
+[node name="Apex" parent="VBoxContainer" instance=ExtResource("1_q72xt")]
+layout_mode = 2
+label = "Apex"
+units = "ft"
+
+[node name="VLA" parent="VBoxContainer" instance=ExtResource("1_q72xt")]
+layout_mode = 2
+label = "VLA"
+units = "deg"
+
+[node name="HLA" parent="VBoxContainer" instance=ExtResource("1_q72xt")]
+layout_mode = 2
+label = "HLA"
+units = "deg"

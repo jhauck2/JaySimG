@@ -1,8 +1,9 @@
-[gd_scene load_steps=8 format=3 uid="uid://b1idtxfp7eoke"]
+[gd_scene load_steps=9 format=3 uid="uid://b1idtxfp7eoke"]
 
 [ext_resource type="Script" uid="uid://c4whkfuiysonu" path="res://range.gd" id="1_sunpe"]
 [ext_resource type="Script" uid="uid://bg5tbfjpq3flx" path="res://tcp_client.gd" id="2_d1a0v"]
 [ext_resource type="PackedScene" uid="uid://w55fmvo7ly8g" path="res://golf_ball.tscn" id="3_4jr3s"]
+[ext_resource type="PackedScene" uid="uid://da1vsfwmbk8vw" path="res://range_ui.tscn" id="4_d1a0v"]
 
 [sub_resource type="Environment" id="Environment_sunpe"]
 ambient_light_color = Color(1, 1, 1, 1)
@@ -49,6 +50,7 @@ transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 174.33
 light_indirect_energy = 6.592
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
+visible = false
 offset_right = 40.0
 offset_bottom = 40.0
 
@@ -59,6 +61,8 @@ text = "Distance: "
 [node name="Label2" type="Label" parent="VBoxContainer"]
 layout_mode = 2
 text = "Apex: "
+
+[node name="RangeUI" parent="." instance=ExtResource("4_d1a0v")]
 
 [connection signal="hit_ball" from="TCPClient" to="GolfBall" method="_on_tcp_client_hit_ball"]
 [connection signal="good_data" from="GolfBall" to="TCPClient" method="_on_golf_ball_good_data"]
