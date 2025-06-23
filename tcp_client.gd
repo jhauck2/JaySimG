@@ -10,7 +10,7 @@ var shot_data : Dictionary
 
 var resp_200 := {"Code" : 200}
 var resp_201 := {"Code": 201, "Message": "JaySimG Player Information"}
-var resp_501 := {"Code": 501, "Message": "Failure Occured"}
+var resp_50x := {"Code": 501, "Message": "Failure Occured"}
 
 signal hit_ball(data:Dictionary)
 
@@ -50,7 +50,19 @@ func _process(_delta: float) -> void:
 					shot_data = json.data
 					if shot_data["ShotDataOptions"]["ContainsBallData"]:
 						emit_signal("hit_ball", shot_data["BallData"])
+				else:
+					respond_error(501, "Bad JSON data")
 
+
+func respond_error(code: int, message: String) -> void:
+	tcp_connection.poll()
+	var tcp_status : StreamPeerTCP.Status = tcp_connection.get_status()
+	if tcp_status == StreamPeerTCP.STATUS_NONE: #disconnected
+		tcp_connected = false
+	elif tcp_status == StreamPeerTCP.STATUS_CONNECTED:
+		resp_50x["Code"] = code
+		resp_50x["Message"] = message
+		tcp_connection.put_data(JSON.stringify(resp_50x).to_ascii_buffer())
 
 func _on_golf_ball_good_data() -> void:
 	tcp_connection.poll()
