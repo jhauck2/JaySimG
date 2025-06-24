@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://da1vsfwmbk8vw"]
 
 [ext_resource type="Script" uid="uid://dginc6hghigy3" path="res://range_ui.gd" id="1_kur1t"]
-[ext_resource type="PackedScene" uid="uid://bxqjwaed60ykh" path="res://data_panel.tscn" id="1_q72xt"]
+[ext_resource type="PackedScene" uid="uid://bddtxjxvxchd0" path="res://data_panel.tscn" id="1_q72xt"]
 
 [node name="RangeUI" type="MarginContainer"]
 anchors_preset = 15

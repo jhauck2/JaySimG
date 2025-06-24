@@ -13,7 +13,6 @@ config_version=5
 config/name="JaySimG"
 run/main_scene="uid://b1idtxfp7eoke"
 config/features=PackedStringArray("4.4", "Mobile")
-config/icon="res://icon.svg"
 
 [display]
 

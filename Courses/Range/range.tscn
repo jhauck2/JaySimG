@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://c4whkfuiysonu" path="res://range.gd" id="1_sunpe"]
 [ext_resource type="Script" uid="uid://bg5tbfjpq3flx" path="res://tcp_client.gd" id="2_d1a0v"]
 [ext_resource type="PackedScene" uid="uid://w55fmvo7ly8g" path="res://golf_ball.tscn" id="3_4jr3s"]
-[ext_resource type="PackedScene" uid="uid://da1vsfwmbk8vw" path="res://range_ui.tscn" id="4_d1a0v"]
+[ext_resource type="PackedScene" uid="uid://blo3acl1xad3i" path="res://range_ui.tscn" id="4_d1a0v"]
 
 [sub_resource type="Environment" id="Environment_sunpe"]
 ambient_light_color = Color(1, 1, 1, 1)
