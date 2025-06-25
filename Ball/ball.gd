@@ -114,13 +114,15 @@ func _physics_process(delta: float) -> void:
 	# Collisions
 	var collision = move_and_collide(velocity*delta)
 	if collision:
-		if velocity.length() > 0.5:
+		if velocity.y < -0.5:
 			velocity = bounce(velocity, collision.get_normal())
 		else:
-			velocity = Vector3.ZERO
-			state = Enums.BallState.REST
+			velocity.y = 0
 			emit_signal("rest")
 			
+	if velocity.length() < 0.01:
+		state = Enums.BallState.REST
+		velocity = Vector3.ZERO
 
 
 func bounce(vel, normal) -> Vector3:

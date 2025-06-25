@@ -6,15 +6,15 @@
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_ubhqr"]
 margin = 0.06
-radius = 0.063
+radius = 0.043
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_sunpe"]
 emission = Color(1, 1, 1, 1)
 
 [sub_resource type="SphereMesh" id="SphereMesh_rnhoh"]
 material = SubResource("StandardMaterial3D_sunpe")
-radius = 0.063
-height = 0.126
+radius = 0.043
+height = 0.085
 
 [sub_resource type="ImmediateMesh" id="ImmediateMesh_d1a0v"]
 
