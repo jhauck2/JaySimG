@@ -14,6 +14,10 @@ config/name="JaySimG"
 run/main_scene="uid://b1idtxfp7eoke"
 config/features=PackedStringArray("4.4", "Mobile")
 
+[autoload]
+
+PhantomCameraManager="*res://addons/phantom_camera/scripts/managers/phantom_camera_manager.gd"
+
 [display]
 
 window/size/viewport_width=1728
@@ -21,7 +25,7 @@ window/size/viewport_height=972
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/sky_3d/plugin.cfg", "res://addons/terrain_3d/plugin.cfg")
+enabled=PackedStringArray("res://addons/phantom_camera/plugin.cfg", "res://addons/sky_3d/plugin.cfg", "res://addons/terrain_3d/plugin.cfg")
 
 [input]
 

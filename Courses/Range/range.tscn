@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=3 uid="uid://b1idtxfp7eoke"]
+[gd_scene load_steps=33 format=3 uid="uid://b1idtxfp7eoke"]
 
 [ext_resource type="Script" uid="uid://c4whkfuiysonu" path="res://Courses/Range/range.gd" id="1_sunpe"]
 [ext_resource type="Script" uid="uid://bg5tbfjpq3flx" path="res://TCP/tcp_client.gd" id="2_d1a0v"]
@@ -16,6 +16,9 @@
 [ext_resource type="Script" uid="uid://deo0gxkmk2ahd" path="res://addons/sky_3d/src/Sky3D.gd" id="12_6rpr1"]
 [ext_resource type="Script" uid="uid://b4tkplvh7fq40" path="res://addons/sky_3d/src/Skydome.gd" id="13_til7k"]
 [ext_resource type="Script" uid="uid://cjmkcj8hwm7ts" path="res://addons/sky_3d/src/TimeOfDay.gd" id="14_oe2rx"]
+[ext_resource type="Script" uid="uid://csjccrhj5wnx7" path="res://addons/phantom_camera/scripts/phantom_camera/phantom_camera_3d.gd" id="17_i3bow"]
+[ext_resource type="Script" uid="uid://8umksf8e80fw" path="res://addons/phantom_camera/scripts/resources/tween_resource.gd" id="18_gqfs3"]
+[ext_resource type="Script" uid="uid://bd046eokvcnu2" path="res://addons/phantom_camera/scripts/phantom_camera_host/phantom_camera_host.gd" id="19_gqfs3"]
 
 [sub_resource type="Gradient" id="Gradient_ocquq"]
 offsets = PackedFloat32Array(0.2, 1)
@@ -106,7 +109,7 @@ shader_parameter/atm_darkness = 0.5
 shader_parameter/atm_sun_intensity = 18.0
 shader_parameter/atm_day_tint = Color(0.807843, 0.909804, 1, 1)
 shader_parameter/atm_horizon_light_tint = Color(0.980392, 0.635294, 0.462745, 1)
-shader_parameter/atm_night_tint = Color(0, 0, 0, 0)
+shader_parameter/atm_night_tint = Color(0.107779, 0.127831, 0.160416, 0.639157)
 shader_parameter/atm_level_params = Vector3(1, 0, 0)
 shader_parameter/atm_thickness = 0.7
 shader_parameter/atm_beta_ray = Vector3(5.80454e-06, 1.35629e-05, 3.31126e-05)
@@ -131,7 +134,7 @@ shader_parameter/background_color = Color(0.709804, 0.709804, 0.709804, 0.854902
 shader_parameter/stars_field_color = Color(1, 1, 1, 1)
 shader_parameter/stars_field_texture = ExtResource("11_hbh3r")
 shader_parameter/sky_alignment = Vector3(2.6555, -0.23935, 0.4505)
-shader_parameter/sky_rotation = -10.8154
+shader_parameter/sky_rotation = -13.4465
 shader_parameter/sky_tilt = -1.29154
 shader_parameter/stars_scintillation = 0.75
 shader_parameter/stars_scintillation_speed = 0.01
@@ -166,8 +169,8 @@ shader_parameter/cumulus_clouds_horizon_light_color = Color(0.98, 0.43, 0.15, 1)
 shader_parameter/cumulus_clouds_night_color = Color(0.090196, 0.094118, 0.129412, 1)
 shader_parameter/cumulus_clouds_partial_mie_phase = Vector3(0.957564, 1.04244, 0.412)
 shader_parameter/cumulus_clouds_mie_intensity = 1.0
-shader_parameter/moon_matrix = Basis(-3.72529e-09, -0.691397, 0.722475, -0.996378, -0.0614338, -0.0587912, 0.0850324, -0.719859, -0.688893)
-shader_parameter/deep_space_matrix = Basis(0.179211, 0.983811, 0, 0.271176, -0.0493972, -0.961261, -0.945699, 0.172268, -0.275638)
+shader_parameter/moon_matrix = Basis(0, -0.00147907, -0.999999, -0.940091, -0.340922, 0.000504248, -0.340922, 0.94009, -0.00139046)
+shader_parameter/deep_space_matrix = Basis(-0.637033, -0.770836, 0, -0.212472, 0.175591, -0.961262, 0.740975, -0.612356, -0.275638)
 
 [sub_resource type="Sky" id="Sky_rybw1"]
 sky_material = SubResource("ShaderMaterial_0yxxa")
@@ -176,12 +179,19 @@ sky_material = SubResource("ShaderMaterial_0yxxa")
 background_mode = 2
 sky = SubResource("Sky_rybw1")
 ambient_light_source = 3
-ambient_light_color = Color(1, 1, 1, 1)
+ambient_light_color = Color(0.33402, 0.315386, 0.35, 1)
+ambient_light_sky_contribution = 0.7
 reflected_light_source = 2
 tonemap_mode = 3
 tonemap_white = 6.0
 
 [sub_resource type="CameraAttributesPractical" id="CameraAttributesPractical_ainke"]
+
+[sub_resource type="Resource" id="Resource_hbh3r"]
+script = ExtResource("18_gqfs3")
+duration = 1.0
+transition = 0
+ease = 2
 
 [node name="Range" type="Node3D"]
 script = ExtResource("1_sunpe")
@@ -191,9 +201,6 @@ script = ExtResource("2_d1a0v")
 
 [node name="GolfBall" parent="." instance=ExtResource("3_4jr3s")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.2, 0)
-
-[node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(0.0296662, 0, -0.99956, 0, 1, 0, 0.99956, 0, 0.0296662, -4, 2, 0)
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 174.334, 165.881, 0)
@@ -214,30 +221,51 @@ metadata/_edit_lock_ = true
 environment = SubResource("Environment_2xe6u")
 camera_attributes = SubResource("CameraAttributesPractical_ainke")
 script = ExtResource("12_6rpr1")
-current_time = 10.137
+current_time = 19.0458
 metadata/_custom_type_script = "uid://deo0gxkmk2ahd"
 
 [node name="SunLight" type="DirectionalLight3D" parent="Sky3D"]
-transform = Transform3D(0, -0.912935, 0.408106, 0.655114, 0.308336, 0.68975, -0.75553, 0.267356, 0.598076, 0.408106, 0.68975, 0.598076)
-shadow_enabled = true
+transform = Transform3D(0, -0.42269, -0.906275, 0.596817, 0.727174, -0.339157, 0.802378, -0.54088, 0.252268, -0.906275, -0.339157, 0.252268)
+light_color = Color(0.98, 0.523, 0.294, 1)
+light_energy = 0.0
 
 [node name="MoonLight" type="DirectionalLight3D" parent="Sky3D"]
-transform = Transform3D(0, -0.996378, 0.0850324, -0.691397, -0.0614338, -0.719858, 0.722475, -0.0587912, -0.688893, 0.0850324, -0.719858, -0.688893)
+transform = Transform3D(0, -0.940092, -0.340922, -0.00147907, -0.340922, 0.940091, -0.999999, 0.000504249, -0.00139046, -0.340922, 0.94009, -0.00139046)
 light_color = Color(0.572549, 0.776471, 0.956863, 1)
-light_energy = 0.0
+light_energy = 0.125482
+shadow_enabled = true
 
 [node name="Skydome" type="Node" parent="Sky3D"]
 script = ExtResource("13_til7k")
-sun_azimuth = -145.692
-sun_altitude = -46.3897
-moon_azimuth = -7.03662
-moon_altitude = -136.043
+sun_azimuth = -254.445
+sun_altitude = -109.825
+moon_azimuth = -270.234
+moon_altitude = -19.9332
 
 [node name="TimeOfDay" type="Node" parent="Sky3D"]
 script = ExtResource("14_oe2rx")
 dome_path = NodePath("../Skydome")
-total_hours = 10.137
-day = 6
+total_hours = 19.0458
+day = 23
+
+[node name="PhantomCamera3D" type="Node3D" parent="."]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -6.04467, 3.02244, 0)
+top_level = true
+script = ExtResource("17_i3bow")
+follow_mode = 5
+tween_resource = SubResource("Resource_hbh3r")
+follow_offset = Vector3(-7, 2, 0)
+follow_damping = true
+follow_damping_value = Vector3(0.4, 0.1, 0.1)
+dead_zone_height = 0.204
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -6.04467, 3.02244, 0)
+
+[node name="PhantomCameraHost" type="Node" parent="Camera3D"]
+process_priority = 300
+process_physics_priority = 300
+script = ExtResource("19_gqfs3")
 
 [connection signal="hit_ball" from="TCPClient" to="." method="_on_tcp_client_hit_ball"]
 [connection signal="hit_ball" from="TCPClient" to="GolfBall" method="_on_tcp_client_hit_ball"]
