@@ -176,9 +176,9 @@ func hit():
 	# 8 iron test shot - 100 mph, 20.8 deg launch, 1.7 deg horz launch, 7494 rpm, 2.7 degree spin axis offset
 	var data : Dictionary = {"Speed": 100.0,
 	"VLA": 22.0,
-	"HLA": 1.1,
+	"HLA": -3.1,
 	"TotalSpin": 6000.0,
-	"SpinAxis": 0.5}
+	"SpinAxis": 3.5}
 	
 	state = Enums.BallState.FLIGHT
 	position = Vector3(0.0, 0.05, 0.0)

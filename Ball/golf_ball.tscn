@@ -1,8 +1,8 @@
 [gd_scene load_steps=8 format=3 uid="uid://w55fmvo7ly8g"]
 
-[ext_resource type="Script" uid="uid://bsmxwh6d6yri6" path="res://golf_ball.gd" id="1_g0ryd"]
+[ext_resource type="Script" uid="uid://bsmxwh6d6yri6" path="res://Ball/golf_ball.gd" id="1_g0ryd"]
 [ext_resource type="Script" uid="uid://b664jppxri6ts" path="res://Ball/ball.gd" id="2_g0ryd"]
-[ext_resource type="Script" path="res://Ball/ball_trail.gd" id="3_g0ryd"]
+[ext_resource type="Script" uid="uid://j86sopbu1jca" path="res://Ball/ball_trail.gd" id="3_g0ryd"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_ubhqr"]
 margin = 0.06
@@ -22,7 +22,6 @@ height = 0.126
 script = ExtResource("1_g0ryd")
 
 [node name="Ball" type="CharacterBody3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
 script = ExtResource("2_g0ryd")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Ball"]

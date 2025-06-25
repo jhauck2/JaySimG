@@ -19,6 +19,10 @@ config/features=PackedStringArray("4.4", "Mobile")
 window/size/viewport_width=1728
 window/size/viewport_height=972
 
+[editor_plugins]
+
+enabled=PackedStringArray("res://addons/sky_3d/plugin.cfg", "res://addons/terrain_3d/plugin.cfg")
+
 [input]
 
 hit={

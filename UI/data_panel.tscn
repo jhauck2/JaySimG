@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://bxqjwaed60ykh"]
 
-[ext_resource type="Script" uid="uid://xfw7yhivttql" path="res://data_panel.gd" id="1_440qv"]
+[ext_resource type="Script" uid="uid://xfw7yhivttql" path="res://UI/data_panel.gd" id="1_440qv"]
 
 [node name="DataPanel" type="PanelContainer"]
 custom_minimum_size = Vector2(100, 0)
@@ -8,6 +8,7 @@ script = ExtResource("1_440qv")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 layout_mode = 2
+theme_override_constants/separation = -4
 
 [node name="Label" type="Label" parent="VBoxContainer"]
 layout_mode = 2
