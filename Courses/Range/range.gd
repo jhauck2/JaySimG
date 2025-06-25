@@ -10,7 +10,6 @@ var ball_data: Dictionary = {"Distance": "---", "Carry": "---", "Offline": "---"
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	$PhantomCamera3D.follow_target = $GolfBall/Ball
-	#$PhantomCamera3D.look_at_target = $GolfBall/Ball
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
