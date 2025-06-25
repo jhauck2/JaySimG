@@ -15,8 +15,7 @@ func _ready() -> void:
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta: float) -> void:
 	ball_data["Distance"] = str($GolfBall.get_distance())
-	if $GolfBall.get_ball_state() == Enums.BallState.FLIGHT:
-		ball_data["Carry"] = str($GolfBall.get_distance())
+	ball_data["Carry"] = str($GolfBall.carry)
 	ball_data["Apex"] = str($GolfBall.apex*3)
 	var offline = $GolfBall.get_offline()
 	var offline_text := "R"

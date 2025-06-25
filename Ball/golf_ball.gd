@@ -5,9 +5,11 @@ var track_points : bool = false
 var trail_timer : float = 0.0
 var trail_resolution : float = 0.1
 var apex : int = 0
+var carry: int = 0
 
 signal good_data
 signal bad_data
+signal reset
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -24,11 +26,14 @@ func _process(delta: float) -> void:
 	if Input.is_action_just_pressed("reset"):
 		$Ball.call_deferred("reset")
 		apex = 0
+		carry = 0
 		track_points = false
 		$BallTrail.clear_points()
 		
 	if track_points:
 		apex = max(apex, int($Ball.position.y*1.09361))
+		if $Ball.state == Enums.BallState.FLIGHT:
+			carry = int(Vector2($Ball.position.x, $Ball.position.z).length()*1.09361)
 		trail_timer += delta
 		if trail_timer >= trail_resolution:
 			$BallTrail.add_point($Ball.position)
