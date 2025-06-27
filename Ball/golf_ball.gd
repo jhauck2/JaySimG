@@ -45,7 +45,7 @@ func get_distance() -> int:
 func get_offline() -> int:
 	return int($Ball.position.z)
 
-func validate_data(data) -> bool:
+func validate_data(data: Dictionary) -> bool:
 	# TODO: implement data validation
 	if data:
 		return true
