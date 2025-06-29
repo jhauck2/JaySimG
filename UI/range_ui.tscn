@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://da1vsfwmbk8vw"]
+[gd_scene load_steps=4 format=3 uid="uid://da1vsfwmbk8vw"]
 
 [ext_resource type="Script" uid="uid://dginc6hghigy3" path="res://UI/range_ui.gd" id="1_kur1t"]
 [ext_resource type="PackedScene" uid="uid://bxqjwaed60ykh" path="res://UI/data_panel.tscn" id="1_q72xt"]
+[ext_resource type="PackedScene" uid="uid://xwb2lctkdfv5" path="res://UI/ClubSelector/club_selector.tscn" id="3_crlyb"]
 
 [node name="RangeUI" type="MarginContainer"]
 anchors_preset = 15
@@ -52,3 +53,6 @@ units = "deg"
 layout_mode = 2
 label = "HLA"
 units = "deg"
+
+[node name="ClubSelector" parent="." instance=ExtResource("3_crlyb")]
+layout_mode = 2
