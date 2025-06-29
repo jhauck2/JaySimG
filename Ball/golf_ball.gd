@@ -56,6 +56,8 @@ func validate_data(data: Dictionary) -> bool:
 func reset_ball():
 	$Ball.call_deferred("reset")
 	$BallTrail.clear_points()
+	apex = 0
+	carry = 0
 	
 
 func _on_ball_rest() -> void:

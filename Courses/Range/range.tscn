@@ -110,7 +110,7 @@ shader_parameter/atm_darkness = 0.5
 shader_parameter/atm_sun_intensity = 18.0
 shader_parameter/atm_day_tint = Color(0.807843, 0.909804, 1, 1)
 shader_parameter/atm_horizon_light_tint = Color(0.980392, 0.635294, 0.462745, 1)
-shader_parameter/atm_night_tint = Color(0.0109067, 0.0129359, 0.0162333, 0.0646795)
+shader_parameter/atm_night_tint = Color(0.137952, 0.163618, 0.205324, 0.818091)
 shader_parameter/atm_level_params = Vector3(1, 0, 0)
 shader_parameter/atm_thickness = 0.7
 shader_parameter/atm_beta_ray = Vector3(5.80454e-06, 1.35629e-05, 3.31126e-05)
@@ -135,7 +135,7 @@ shader_parameter/background_color = Color(0.709804, 0.709804, 0.709804, 0.854902
 shader_parameter/stars_field_color = Color(1, 1, 1, 1)
 shader_parameter/stars_field_texture = ExtResource("11_hbh3r")
 shader_parameter/sky_alignment = Vector3(2.6555, -0.23935, 0.4505)
-shader_parameter/sky_rotation = -5.11417
+shader_parameter/sky_rotation = -8.66398
 shader_parameter/sky_tilt = -1.29154
 shader_parameter/stars_scintillation = 0.75
 shader_parameter/stars_scintillation_speed = 0.01
@@ -170,8 +170,8 @@ shader_parameter/cumulus_clouds_horizon_light_color = Color(0.98, 0.43, 0.15, 1)
 shader_parameter/cumulus_clouds_night_color = Color(0.090196, 0.094118, 0.129412, 1)
 shader_parameter/cumulus_clouds_partial_mie_phase = Vector3(0.957564, 1.04244, 0.412)
 shader_parameter/cumulus_clouds_mie_intensity = 1.0
-shader_parameter/moon_matrix = Basis(0, -0.604042, 0.796953, -0.902161, 0.343805, 0.260583, -0.431399, -0.71898, -0.544943)
-shader_parameter/deep_space_matrix = Basis(-0.391062, 0.920364, 0, 0.253688, 0.107791, -0.961262, -0.884711, -0.375913, -0.275638)
+shader_parameter/moon_matrix = Basis(7.45058e-09, 0.240189, -0.970726, -0.766211, 0.623779, 0.154343, 0.64259, 0.743781, 0.184035)
+shader_parameter/deep_space_matrix = Basis(0.72429, -0.689496, 0, -0.190051, -0.199642, -0.961262, 0.662786, 0.696232, -0.275638)
 
 [sub_resource type="Sky" id="Sky_rybw1"]
 sky_material = SubResource("ShaderMaterial_0yxxa")
@@ -180,7 +180,8 @@ sky_material = SubResource("ShaderMaterial_0yxxa")
 background_mode = 2
 sky = SubResource("Sky_rybw1")
 ambient_light_source = 3
-ambient_light_color = Color(0.632572, 0.479617, 0.403804, 1)
+ambient_light_color = Color(0.235156, 0.278907, 0.35, 1)
+ambient_light_sky_contribution = 0.7
 reflected_light_source = 2
 tonemap_mode = 3
 tonemap_white = 6.0
@@ -221,32 +222,33 @@ metadata/_edit_lock_ = true
 environment = SubResource("Environment_2xe6u")
 camera_attributes = SubResource("CameraAttributesPractical_ainke")
 script = ExtResource("12_6rpr1")
-current_time = 6.73016
+current_time = 20.16
 metadata/_custom_type_script = "uid://deo0gxkmk2ahd"
 
 [node name="SunLight" type="DirectionalLight3D" parent="Sky3D"]
-transform = Transform3D(0, -0.235593, 0.971852, -0.0480613, 0.970729, 0.235321, -0.998844, -0.0467085, -0.0113229, 0.971852, 0.235321, -0.0113229)
-light_color = Color(0.989413, 0.747496, 0.626273, 1)
-shadow_enabled = true
+transform = Transform3D(0, -0.57144, -0.820644, -0.421904, 0.744029, -0.518091, 0.906641, 0.346233, -0.241093, -0.820644, -0.518091, -0.241093)
+light_color = Color(0.98, 0.523, 0.294, 1)
+light_energy = 0.0
 
 [node name="MoonLight" type="DirectionalLight3D" parent="Sky3D"]
-transform = Transform3D(0, -0.902161, -0.431399, -0.604042, 0.343805, -0.71898, 0.796953, 0.260583, -0.544943, -0.431399, -0.71898, -0.544943)
+transform = Transform3D(0, -0.766211, 0.64259, 0.240189, 0.623779, 0.743781, -0.970726, 0.154343, 0.184035, 0.64259, 0.743781, 0.184035)
 light_color = Color(0.572549, 0.776471, 0.956863, 1)
-light_energy = 0.0
+light_energy = 0.182544
+shadow_enabled = true
 
 [node name="Skydome" type="Node" parent="Sky3D"]
 script = ExtResource("13_til7k")
-sun_azimuth = -89.3324
-sun_altitude = -76.3895
-moon_azimuth = -321.633
-moon_altitude = -135.97
+sun_azimuth = -286.372
+sun_altitude = -121.204
+moon_azimuth = -105.981
+moon_altitude = -41.9455
 
 [node name="TimeOfDay" type="Node" parent="Sky3D"]
 script = ExtResource("14_oe2rx")
 dome_path = NodePath("../Skydome")
-total_hours = 6.73016
-day = 31
-month = 3
+total_hours = 20.16
+day = 2
+month = 4
 
 [node name="PhantomCamera3D" type="Node3D" parent="."]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -6.04467, 3.02244, 0)
