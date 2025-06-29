@@ -110,6 +110,10 @@ func _physics_process(delta: float) -> void:
 	velocity = velocity + F/mass*delta
 	omega = omega + T/I*delta
 	
+	if velocity.length() < 0.1 and state != Enums.BallState.REST:
+		state = Enums.BallState.REST
+		velocity = Vector3.ZERO
+		emit_signal("rest")
 	
 	# Collisions
 	var collision = move_and_collide(velocity*delta)
@@ -119,10 +123,12 @@ func _physics_process(delta: float) -> void:
 		else:
 			velocity.y = 0
 			
-	if velocity.length() < 0.01:
-		state = Enums.BallState.REST
-		velocity = Vector3.ZERO
-		emit_signal("rest")
+		if velocity.length() < 0.1 and state != Enums.BallState.REST:
+			state = Enums.BallState.REST
+			velocity = Vector3.ZERO
+			emit_signal("rest")
+			
+	
 
 
 func bounce(vel, normal) -> Vector3:

@@ -9,7 +9,7 @@ var carry: int = 0
 
 signal good_data
 signal bad_data
-signal reset
+signal rest
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -53,8 +53,14 @@ func validate_data(data: Dictionary) -> bool:
 		return false
 
 
+func reset_ball():
+	$Ball.call_deferred("reset")
+	$BallTrail.clear_points()
+	
+
 func _on_ball_rest() -> void:
 	track_points = false
+	emit_signal("rest")
 
 
 func get_ball_state():
