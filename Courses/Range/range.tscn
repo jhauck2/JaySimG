@@ -1,4 +1,4 @@
-[gd_scene load_steps=33 format=3 uid="uid://b1idtxfp7eoke"]
+[gd_scene load_steps=34 format=3 uid="uid://b1idtxfp7eoke"]
 
 [ext_resource type="Script" uid="uid://c4whkfuiysonu" path="res://Courses/Range/range.gd" id="1_sunpe"]
 [ext_resource type="Script" uid="uid://bg5tbfjpq3flx" path="res://TCP/tcp_client.gd" id="2_d1a0v"]
@@ -19,6 +19,7 @@
 [ext_resource type="Script" uid="uid://csjccrhj5wnx7" path="res://addons/phantom_camera/scripts/phantom_camera/phantom_camera_3d.gd" id="17_i3bow"]
 [ext_resource type="Script" uid="uid://8umksf8e80fw" path="res://addons/phantom_camera/scripts/resources/tween_resource.gd" id="18_gqfs3"]
 [ext_resource type="Script" uid="uid://bd046eokvcnu2" path="res://addons/phantom_camera/scripts/phantom_camera_host/phantom_camera_host.gd" id="19_gqfs3"]
+[ext_resource type="Texture2D" uid="uid://bn5cq6uuameij" path="res://Courses/Range/Range_Distances.png" id="20_hbh3r"]
 
 [sub_resource type="Gradient" id="Gradient_ocquq"]
 offsets = PackedFloat32Array(0.2, 1)
@@ -109,7 +110,7 @@ shader_parameter/atm_darkness = 0.5
 shader_parameter/atm_sun_intensity = 18.0
 shader_parameter/atm_day_tint = Color(0.807843, 0.909804, 1, 1)
 shader_parameter/atm_horizon_light_tint = Color(0.980392, 0.635294, 0.462745, 1)
-shader_parameter/atm_night_tint = Color(0, 0, 0, 0)
+shader_parameter/atm_night_tint = Color(0.0109067, 0.0129359, 0.0162333, 0.0646795)
 shader_parameter/atm_level_params = Vector3(1, 0, 0)
 shader_parameter/atm_thickness = 0.7
 shader_parameter/atm_beta_ray = Vector3(5.80454e-06, 1.35629e-05, 3.31126e-05)
@@ -134,7 +135,7 @@ shader_parameter/background_color = Color(0.709804, 0.709804, 0.709804, 0.854902
 shader_parameter/stars_field_color = Color(1, 1, 1, 1)
 shader_parameter/stars_field_texture = ExtResource("11_hbh3r")
 shader_parameter/sky_alignment = Vector3(2.6555, -0.23935, 0.4505)
-shader_parameter/sky_rotation = -7.58938
+shader_parameter/sky_rotation = -5.11417
 shader_parameter/sky_tilt = -1.29154
 shader_parameter/stars_scintillation = 0.75
 shader_parameter/stars_scintillation_speed = 0.01
@@ -169,8 +170,8 @@ shader_parameter/cumulus_clouds_horizon_light_color = Color(0.98, 0.43, 0.15, 1)
 shader_parameter/cumulus_clouds_night_color = Color(0.090196, 0.094118, 0.129412, 1)
 shader_parameter/cumulus_clouds_partial_mie_phase = Vector3(0.957564, 1.04244, 0.412)
 shader_parameter/cumulus_clouds_mie_intensity = 1.0
-shader_parameter/moon_matrix = Basis(7.45058e-09, -0.65858, -0.752511, -0.240323, 0.730457, -0.639279, 0.970693, 0.180846, -0.158272)
-shader_parameter/deep_space_matrix = Basis(-0.261526, -0.965196, -2.98023e-08, -0.266045, 0.0720866, -0.961261, 0.927806, -0.251395, -0.275638)
+shader_parameter/moon_matrix = Basis(0, -0.604042, 0.796953, -0.902161, 0.343805, 0.260583, -0.431399, -0.71898, -0.544943)
+shader_parameter/deep_space_matrix = Basis(-0.391062, 0.920364, 0, 0.253688, 0.107791, -0.961262, -0.884711, -0.375913, -0.275638)
 
 [sub_resource type="Sky" id="Sky_rybw1"]
 sky_material = SubResource("ShaderMaterial_0yxxa")
@@ -179,7 +180,7 @@ sky_material = SubResource("ShaderMaterial_0yxxa")
 background_mode = 2
 sky = SubResource("Sky_rybw1")
 ambient_light_source = 3
-ambient_light_color = Color(0.736813, 0.6294, 0.575576, 1)
+ambient_light_color = Color(0.632572, 0.479617, 0.403804, 1)
 reflected_light_source = 2
 tonemap_mode = 3
 tonemap_white = 6.0
@@ -220,31 +221,31 @@ metadata/_edit_lock_ = true
 environment = SubResource("Environment_2xe6u")
 camera_attributes = SubResource("CameraAttributesPractical_ainke")
 script = ExtResource("12_6rpr1")
-current_time = 16.5521
+current_time = 6.73016
 metadata/_custom_type_script = "uid://deo0gxkmk2ahd"
 
 [node name="SunLight" type="DirectionalLight3D" parent="Sky3D"]
-transform = Transform3D(0, -0.34651, -0.938046, 0.169205, -0.924521, 0.341514, -0.985581, -0.158722, 0.0586311, -0.938046, 0.341514, 0.0586311)
-light_color = Color(0.993661, 0.848804, 0.776217, 1)
+transform = Transform3D(0, -0.235593, 0.971852, -0.0480613, 0.970729, 0.235321, -0.998844, -0.0467085, -0.0113229, 0.971852, 0.235321, -0.0113229)
+light_color = Color(0.989413, 0.747496, 0.626273, 1)
 shadow_enabled = true
 
 [node name="MoonLight" type="DirectionalLight3D" parent="Sky3D"]
-transform = Transform3D(0, -0.240323, 0.970693, -0.65858, 0.730457, 0.180846, -0.752511, -0.639279, -0.158272, 0.970693, 0.180846, -0.158272)
+transform = Transform3D(0, -0.902161, -0.431399, -0.604042, 0.343805, -0.71898, 0.796953, 0.260583, -0.544943, -0.431399, -0.71898, -0.544943)
 light_color = Color(0.572549, 0.776471, 0.956863, 1)
 light_energy = 0.0
 
 [node name="Skydome" type="Node" parent="Sky3D"]
 script = ExtResource("13_til7k")
-sun_azimuth = -266.423
-sun_altitude = -70.0309
-moon_azimuth = -80.7393
-moon_altitude = -79.5809
+sun_azimuth = -89.3324
+sun_altitude = -76.3895
+moon_azimuth = -321.633
+moon_altitude = -135.97
 
 [node name="TimeOfDay" type="Node" parent="Sky3D"]
 script = ExtResource("14_oe2rx")
 dome_path = NodePath("../Skydome")
-total_hours = 16.5521
-day = 25
+total_hours = 6.73016
+day = 31
 month = 3
 
 [node name="PhantomCamera3D" type="Node3D" parent="."]
@@ -265,6 +266,42 @@ transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -6.044
 process_priority = 300
 process_physics_priority = 300
 script = ExtResource("19_gqfs3")
+
+[node name="Decal" type="Decal" parent="."]
+transform = Transform3D(1.19249e-08, 0, -1, 0, 1, 0, 1, 0, 1.19249e-08, 182.88, 0, 0)
+size = Vector3(5, 2, 365.76)
+texture_albedo = ExtResource("20_hbh3r")
+
+[node name="YardMarkers" type="Node3D" parent="."]
+
+[node name="50Yards" type="Label3D" parent="YardMarkers"]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 45.72, 0.379, -0.5)
+pixel_size = 0.02
+text = "50"
+
+[node name="100Yards" type="Label3D" parent="YardMarkers"]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 91.4, 0.379, -0.7)
+pixel_size = 0.02
+text = "100
+"
+
+[node name="150Yards" type="Label3D" parent="YardMarkers"]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 137.16, 0.379, -0.7)
+pixel_size = 0.02
+text = "150
+"
+
+[node name="200" type="Label3D" parent="YardMarkers"]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 182.88, 0.379, -0.7)
+pixel_size = 0.02
+text = "200
+"
+
+[node name="250" type="Label3D" parent="YardMarkers"]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 228.6, 0.379, -0.7)
+pixel_size = 0.02
+text = "250
+"
 
 [connection signal="hit_ball" from="TCPClient" to="." method="_on_tcp_client_hit_ball"]
 [connection signal="hit_ball" from="TCPClient" to="GolfBall" method="_on_tcp_client_hit_ball"]
