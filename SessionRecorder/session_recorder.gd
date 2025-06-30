@@ -36,6 +36,17 @@ var session_id : int = 0
 var date : String = ""
 var current_club : String = "Dr"
 var shot_number : int = 0
+var base_shot : Dictionary = {"Shot": 1, 
+		"Club": "Dr",
+		"Speed": 0.0,
+		"SpinAxis": 0.0,
+		"TotalSpin": 0.0,
+		"HLA": 0.0,
+		"VLA": 0.0,
+		"TotalDistance": 0,
+		"CarryDistance": 0,
+		"OfflineDistance": 0,
+		"Apex": 0}
 
 signal recording_state(value: bool)
 
@@ -64,9 +75,10 @@ func start_recording():
 	
 	
 func record_shot(shot_data: Dictionary):
-	var data = shot_data.duplicate()
+	var data = base_shot.merged(shot_data, true)
 	shot_number += 1
 	data["Shot"] = shot_number
+	data["Club"] = current_club
 	session_data["Shots"].append(data)
 	
 func stop_recording():
@@ -80,3 +92,7 @@ func stop_recording():
 func _on_golf_ball_rest(shot_data: Dictionary) -> void:
 	if recording:
 		record_shot(shot_data)
+
+
+func _on_range_ui_club_selected(club: String) -> void:
+	current_club = club

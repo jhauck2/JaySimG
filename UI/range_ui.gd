@@ -1,6 +1,7 @@
 extends MarginContainer
 
 signal rec_button_pressed
+signal club_selected(club: String)
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -32,3 +33,7 @@ func _on_session_recorder_recording_state(value: bool) -> void:
 	else:
 		$HBoxContainer/RecButton.text = "REC: Off"
 		$HBoxContainer/RecButton.tooltip_text = "Start Recording Range Session"
+
+
+func _on_club_selector_club_selected(club: String) -> void:
+	emit_signal("club_selected", club)

@@ -75,4 +75,5 @@ layout_mode = 2
 label = "HLA"
 units = "deg"
 
+[connection signal="club_selected" from="HBoxContainer/ClubSelector" to="." method="_on_club_selector_club_selected"]
 [connection signal="pressed" from="HBoxContainer/RecButton" to="." method="_on_rec_button_pressed"]
