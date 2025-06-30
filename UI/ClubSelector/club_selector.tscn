@@ -5,42 +5,33 @@
 [ext_resource type="Script" uid="uid://dbhxqo4o8hkay" path="res://UI/ClubSelector/club_indicator.gd" id="1_tf82b"]
 [ext_resource type="Texture2D" uid="uid://tivdhmwmvg81" path="res://UI/ClubSelector/RClubSelect.png" id="3_bim0c"]
 
-[node name="ClubSelector" type="Control"]
-layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
+[node name="ClubSelector" type="HBoxContainer"]
+offset_right = 162.0
+offset_bottom = 69.0
+size_flags_horizontal = 0
+size_flags_vertical = 0
 script = ExtResource("1_bim0c")
 
-[node name="HBoxContainer" type="HBoxContainer" parent="."]
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
-theme_override_constants/separation = 6
-alignment = 1
-
-[node name="LeftSelect" type="TextureButton" parent="HBoxContainer"]
+[node name="LeftSelect" type="TextureButton" parent="."]
 layout_mode = 2
 texture_normal = ExtResource("1_cxupd")
 
-[node name="ClubIndicator" type="PanelContainer" parent="HBoxContainer"]
+[node name="ClubIndicator" type="PanelContainer" parent="."]
 custom_minimum_size = Vector2(90, 0)
 layout_mode = 2
 script = ExtResource("1_tf82b")
 
-[node name="Label" type="Label" parent="HBoxContainer/ClubIndicator"]
+[node name="Label" type="Label" parent="ClubIndicator"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 50
 text = "Dr"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="RightSelect" type="TextureButton" parent="HBoxContainer"]
+[node name="RightSelect" type="TextureButton" parent="."]
 layout_mode = 2
 texture_normal = ExtResource("3_bim0c")
 
-[connection signal="club_selected" from="." to="HBoxContainer/ClubIndicator" method="_on_club_selector_club_selected"]
-[connection signal="pressed" from="HBoxContainer/LeftSelect" to="." method="_on_left_select_pressed"]
-[connection signal="pressed" from="HBoxContainer/RightSelect" to="." method="_on_right_select_pressed"]
+[connection signal="club_selected" from="." to="ClubIndicator" method="_on_club_selector_club_selected"]
+[connection signal="pressed" from="LeftSelect" to="." method="_on_left_select_pressed"]
+[connection signal="pressed" from="RightSelect" to="." method="_on_right_select_pressed"]

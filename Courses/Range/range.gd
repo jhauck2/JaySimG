@@ -31,6 +31,6 @@ func _on_tcp_client_hit_ball(data: Dictionary) -> void:
 	ball_data = data.duplicate()
 
 
-func _on_golf_ball_rest() -> void:
+func _on_golf_ball_rest(_ball_data) -> void:
 	await get_tree().create_timer(3.0).timeout
 	$GolfBall.reset_ball()

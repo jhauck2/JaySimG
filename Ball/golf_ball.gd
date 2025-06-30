@@ -6,10 +6,11 @@ var trail_timer : float = 0.0
 var trail_resolution : float = 0.1
 var apex : int = 0
 var carry: int = 0
+var shot_data: Dictionary = {}
 
 signal good_data
 signal bad_data
-signal rest
+signal rest(data: Dictionary)
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -62,7 +63,10 @@ func reset_ball():
 
 func _on_ball_rest() -> void:
 	track_points = false
-	emit_signal("rest")
+	shot_data["TotalDistance"] = int(Vector2($Ball.position.x, $Ball.position.z).length()*1.09361)
+	shot_data["CarryDistance"] = carry
+	shot_data["Apex"] = apex
+	emit_signal("rest", shot_data)
 
 
 func get_ball_state():
@@ -76,6 +80,8 @@ func _on_tcp_client_hit_ball(data: Dictionary) -> void:
 	else:
 		emit_signal("bad_data")
 		return
+		
+	shot_data = data.duplicate()
 	
 	track_points = true
 	apex = 0
