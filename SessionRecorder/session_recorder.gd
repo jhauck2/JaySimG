@@ -72,7 +72,7 @@ func record_shot(shot_data: Dictionary):
 func stop_recording():
 	var filename : String = username + "_" + date + "_" + str(session_id) + ".json"
 	var save_file = FileAccess.open("user://"+filename, FileAccess.WRITE)
-	var json_string = JSON.stringify(session_data)
+	var json_string = JSON.stringify(session_data, "\t", false)
 	save_file.store_line(json_string)
 
 
