@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://da1vsfwmbk8vw"]
+[gd_scene load_steps=5 format=3 uid="uid://da1vsfwmbk8vw"]
 
 [ext_resource type="Script" uid="uid://dginc6hghigy3" path="res://UI/range_ui.gd" id="1_kur1t"]
 [ext_resource type="PackedScene" uid="uid://bxqjwaed60ykh" path="res://UI/data_panel.tscn" id="1_q72xt"]
 [ext_resource type="PackedScene" uid="uid://xwb2lctkdfv5" path="res://UI/ClubSelector/club_selector.tscn" id="3_crlyb"]
+[ext_resource type="PackedScene" uid="uid://bixsmx2mhvyyx" path="res://UI/SessionPopUp/session_pop_up.tscn" id="4_7kh1v"]
 
 [node name="RangeUI" type="MarginContainer"]
 anchors_preset = 15
@@ -25,7 +26,7 @@ theme_override_constants/separation = 11
 [node name="ClubSelector" parent="HBoxContainer" instance=ExtResource("3_crlyb")]
 layout_mode = 2
 
-[node name="Label" type="Label" parent="HBoxContainer"]
+[node name="PlayerName" type="Label" parent="HBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 1
 theme_override_font_sizes/font_size = 32
@@ -75,5 +76,9 @@ layout_mode = 2
 label = "HLA"
 units = "deg"
 
+[node name="SessionPopUp" parent="." instance=ExtResource("4_7kh1v")]
+layout_mode = 2
+
 [connection signal="club_selected" from="HBoxContainer/ClubSelector" to="." method="_on_club_selector_club_selected"]
 [connection signal="pressed" from="HBoxContainer/RecButton" to="." method="_on_rec_button_pressed"]
+[connection signal="dir_selected" from="SessionPopUp" to="." method="_on_session_pop_up_dir_selected"]

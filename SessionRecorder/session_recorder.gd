@@ -31,6 +31,7 @@ extends Node
 
 var recording : bool = false
 var session_data : Dictionary = {}
+var folder_path: String = ""
 var username : String = "Player1"
 var session_id : int = 0
 var date : String = ""
@@ -52,7 +53,10 @@ signal recording_state(value: bool)
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	pass # Replace with function body.
+	if DirAccess.dir_exists_absolute(folder_path):
+		print("Our folder exists")
+	else:
+		print("Our folder does not exist")
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -83,7 +87,7 @@ func record_shot(shot_data: Dictionary):
 	
 func stop_recording():
 	var filename : String = username + "_" + date + "_" + str(session_id) + ".json"
-	var save_file = FileAccess.open("user://"+filename, FileAccess.WRITE)
+	var save_file = FileAccess.open(folder_path +"/"+ filename, FileAccess.WRITE)
 	var json_string = JSON.stringify(session_data, "\t", false)
 	save_file.store_line(json_string)
 
@@ -96,3 +100,8 @@ func _on_golf_ball_rest(shot_data: Dictionary) -> void:
 
 func _on_range_ui_club_selected(club: String) -> void:
 	current_club = club
+
+
+func _on_range_ui_set_session(dir: String, player_name: String) -> void:
+	folder_path = dir
+	username = player_name
