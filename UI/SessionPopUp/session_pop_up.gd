@@ -21,6 +21,10 @@ func open():
 	$PanelContainer/MarginContainer/VBoxContainer/Label2.visible = false
 	$PanelContainer/MarginContainer/VBoxContainer/Label2.text = ""
 	
+func set_session_data(user, dir):
+	$PanelContainer/MarginContainer/VBoxContainer/PlayerName/TextEdit.text = user
+	$PanelContainer/MarginContainer/VBoxContainer/Directory/TextEdit.text = dir
+	
 func close():
 	visible = false
 	get_tree().paused = false

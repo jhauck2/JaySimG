@@ -45,3 +45,9 @@ func _on_session_pop_up_dir_selected(dir: String, player_name: String) -> void:
 	$HBoxContainer/PlayerName.text = player_name
 	emit_signal("set_session", dir, player_name)
 	pass # Replace with function body.
+
+
+
+func _on_session_recorder_set_session(user: String, dir: String) -> void:
+	$HBoxContainer/PlayerName.text = user
+	$SessionPopUp.set_session_data(user, dir)

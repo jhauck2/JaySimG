@@ -31,7 +31,8 @@ extends Node
 
 var recording : bool = false
 var session_data : Dictionary = {}
-var folder_path: String = ""
+var session_save_file : String = "user://session_data.save"
+var folder_path: String = "user://"
 var username : String = "Player1"
 var session_id : int = 0
 var date : String = ""
@@ -50,13 +51,25 @@ var base_shot : Dictionary = {"Shot": 1,
 		"Apex": 0}
 
 signal recording_state(value: bool)
+signal set_session(user: String, dir: String)
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	if DirAccess.dir_exists_absolute(folder_path):
-		print("Our folder exists")
-	else:
-		print("Our folder does not exist")
+	if FileAccess.file_exists(session_save_file):
+		var save_file := FileAccess.open(session_save_file, FileAccess.READ)
+		var json_object = JSON.new()
+		var error = json_object.parse(save_file.get_as_text())
+		if error == OK:
+			var save_data = json_object.data
+			session_id = save_data["SessionID"]
+			username = save_data["Username"]
+			folder_path = save_data["SessionPath"]
+			emit_signal("set_session", username, folder_path)
+			
+	else: # Create the save file
+		var save_file = FileAccess.open(session_save_file, FileAccess.WRITE)
+		var default_save_data := {"SessionID": session_id, "SessionPath": folder_path, "Username": username}
+		save_file.store_string(JSON.stringify(default_save_data))
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -91,7 +104,18 @@ func stop_recording():
 	var json_string = JSON.stringify(session_data, "\t", false)
 	save_file.store_line(json_string)
 
+func save_all():
+	if recording:
+		stop_recording()
+		
+	var save_file = FileAccess.open(session_save_file, FileAccess.WRITE)
+	var save_data := {"SessionID": session_id, "SessionPath": folder_path, "Username": username}
+	save_file.store_string(JSON.stringify(save_data))
 
+func _notification(what):
+	if what == NOTIFICATION_WM_CLOSE_REQUEST:
+		save_all()
+		get_tree().quit()
 
 func _on_golf_ball_rest(shot_data: Dictionary) -> void:
 	if recording:
