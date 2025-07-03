@@ -36,7 +36,3 @@ func _on_golf_ball_rest(_ball_data) -> void:
 	$GolfBall.reset_ball()
 	ball_data["HLA"] = 0.0
 	ball_data["VLA"] = 0.0
-
-
-func _on_range_ui_set_session(dir: String, name: String) -> void:
-	pass # Replace with function body.
