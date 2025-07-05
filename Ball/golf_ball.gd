@@ -63,7 +63,12 @@ func reset_ball():
 	apex = 0
 	carry = 0
 	offline = 0
+	reset_shot_data()
 	
+
+func reset_shot_data() -> void:
+	for key in shot_data.keys():
+		shot_data[key] = 0.0
 
 func _on_ball_rest() -> void:
 	track_points = false
