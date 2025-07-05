@@ -4,15 +4,16 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://d4mj4jd3fbrgp"
 path.s3tc="res://.godot/imported/grassy-meadow1_albedo.png-46d3470e87891b2229357c827ee3bbd6.s3tc.ctex"
+path.etc2="res://.godot/imported/grassy-meadow1_albedo.png-46d3470e87891b2229357c827ee3bbd6.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 
 [deps]
 
 source_file="res://Courses/Environments/grassy-meadow1-bl/grassy-meadow1_albedo.png"
-dest_files=["res://.godot/imported/grassy-meadow1_albedo.png-46d3470e87891b2229357c827ee3bbd6.s3tc.ctex"]
+dest_files=["res://.godot/imported/grassy-meadow1_albedo.png-46d3470e87891b2229357c827ee3bbd6.s3tc.ctex", "res://.godot/imported/grassy-meadow1_albedo.png-46d3470e87891b2229357c827ee3bbd6.etc2.ctex"]
 
 [params]
 

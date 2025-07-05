@@ -4,15 +4,16 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://bp66n4vgl8yvt"
 path.s3tc="res://.godot/imported/jagged-rocky-ground_alb_ht.png-16d1efffb1fcf7e959436a12b67e601d.s3tc.ctex"
+path.etc2="res://.godot/imported/jagged-rocky-ground_alb_ht.png-16d1efffb1fcf7e959436a12b67e601d.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 
 [deps]
 
 source_file="res://Courses/Environments/jagged-rocky-ground1-bl/jagged-rocky-ground_alb_ht.png"
-dest_files=["res://.godot/imported/jagged-rocky-ground_alb_ht.png-16d1efffb1fcf7e959436a12b67e601d.s3tc.ctex"]
+dest_files=["res://.godot/imported/jagged-rocky-ground_alb_ht.png-16d1efffb1fcf7e959436a12b67e601d.s3tc.ctex", "res://.godot/imported/jagged-rocky-ground_alb_ht.png-16d1efffb1fcf7e959436a12b67e601d.etc2.ctex"]
 
 [params]
 

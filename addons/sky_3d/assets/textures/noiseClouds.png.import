@@ -4,15 +4,16 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://cecwdqjol0ckd"
 path.s3tc="res://.godot/imported/noiseClouds.png-07511094ef8b72a49cc860b35c60d0fd.s3tc.ctex"
+path.etc2="res://.godot/imported/noiseClouds.png-07511094ef8b72a49cc860b35c60d0fd.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 
 [deps]
 
 source_file="res://addons/sky_3d/assets/textures/noiseClouds.png"
-dest_files=["res://.godot/imported/noiseClouds.png-07511094ef8b72a49cc860b35c60d0fd.s3tc.ctex"]
+dest_files=["res://.godot/imported/noiseClouds.png-07511094ef8b72a49cc860b35c60d0fd.s3tc.ctex", "res://.godot/imported/noiseClouds.png-07511094ef8b72a49cc860b35c60d0fd.etc2.ctex"]
 
 [params]
 

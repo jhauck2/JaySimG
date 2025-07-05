@@ -2,18 +2,21 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c3mskbmvnpwux"
-path.s3tc="res://.godot/imported/target.png-878c5e8d057c8a9a4c2322d4ab88e9ef.s3tc.ctex"
-path.etc2="res://.godot/imported/target.png-878c5e8d057c8a9a4c2322d4ab88e9ef.etc2.ctex"
+uid="uid://bug6e86rbxcjy"
+path.s3tc="res://.godot/imported/Range_bush1.png-445bd84834d634c9bc47e36786b94a45.s3tc.ctex"
+path.etc2="res://.godot/imported/Range_bush1.png-445bd84834d634c9bc47e36786b94a45.etc2.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
+generator_parameters={
+"md5": "e44f2a707ca7d589ef3ef1de39b8d051"
+}
 
 [deps]
 
-source_file="res://addons/phantom_camera/examples/textures/3D/target.png"
-dest_files=["res://.godot/imported/target.png-878c5e8d057c8a9a4c2322d4ab88e9ef.s3tc.ctex", "res://.godot/imported/target.png-878c5e8d057c8a9a4c2322d4ab88e9ef.etc2.ctex"]
+source_file="res://Resources/Models/Range_bush1.png"
+dest_files=["res://.godot/imported/Range_bush1.png-445bd84834d634c9bc47e36786b94a45.s3tc.ctex", "res://.godot/imported/Range_bush1.png-445bd84834d634c9bc47e36786b94a45.etc2.ctex"]
 
 [params]
 

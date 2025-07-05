@@ -4,15 +4,16 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://djpfuyxkryegn"
 path.s3tc="res://.godot/imported/noise.jpg-b47d5d36d9abfdaec2a09c140a78ba24.s3tc.ctex"
+path.etc2="res://.godot/imported/noise.jpg-b47d5d36d9abfdaec2a09c140a78ba24.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 
 [deps]
 
 source_file="res://addons/sky_3d/assets/textures/noise.jpg"
-dest_files=["res://.godot/imported/noise.jpg-b47d5d36d9abfdaec2a09c140a78ba24.s3tc.ctex"]
+dest_files=["res://.godot/imported/noise.jpg-b47d5d36d9abfdaec2a09c140a78ba24.s3tc.ctex", "res://.godot/imported/noise.jpg-b47d5d36d9abfdaec2a09c140a78ba24.etc2.ctex"]
 
 [params]
 

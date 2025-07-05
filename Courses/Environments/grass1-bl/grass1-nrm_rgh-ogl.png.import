@@ -2,9 +2,9 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b2wsbjm0c2l16"
-path.s3tc="res://.godot/imported/jagged-rocky-ground_nrm_rgh-ogl.png-dc1e4f933373cfa968432e5af24e2a35.s3tc.ctex"
-path.etc2="res://.godot/imported/jagged-rocky-ground_nrm_rgh-ogl.png-dc1e4f933373cfa968432e5af24e2a35.etc2.ctex"
+uid="uid://b0l8efrbmju6o"
+path.s3tc="res://.godot/imported/grass1-nrm_rgh-ogl.png-bbdbfbdd0027d763631ff6ab5e7267d1.s3tc.ctex"
+path.etc2="res://.godot/imported/grass1-nrm_rgh-ogl.png-bbdbfbdd0027d763631ff6ab5e7267d1.etc2.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
@@ -12,8 +12,8 @@ metadata={
 
 [deps]
 
-source_file="res://Courses/Environments/jagged-rocky-ground1-bl/jagged-rocky-ground_nrm_rgh-ogl.png"
-dest_files=["res://.godot/imported/jagged-rocky-ground_nrm_rgh-ogl.png-dc1e4f933373cfa968432e5af24e2a35.s3tc.ctex", "res://.godot/imported/jagged-rocky-ground_nrm_rgh-ogl.png-dc1e4f933373cfa968432e5af24e2a35.etc2.ctex"]
+source_file="res://Courses/Environments/grass1-bl/grass1-nrm_rgh-ogl.png"
+dest_files=["res://.godot/imported/grass1-nrm_rgh-ogl.png-bbdbfbdd0027d763631ff6ab5e7267d1.s3tc.ctex", "res://.godot/imported/grass1-nrm_rgh-ogl.png-bbdbfbdd0027d763631ff6ab5e7267d1.etc2.ctex"]
 
 [params]
 

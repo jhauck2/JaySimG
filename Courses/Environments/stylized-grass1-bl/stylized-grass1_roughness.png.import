@@ -4,15 +4,16 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://c8k1a6gdl64ea"
 path.s3tc="res://.godot/imported/stylized-grass1_roughness.png-593f1082aebf891f69390b23977ca64e.s3tc.ctex"
+path.etc2="res://.godot/imported/stylized-grass1_roughness.png-593f1082aebf891f69390b23977ca64e.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 
 [deps]
 
 source_file="res://Courses/Environments/stylized-grass1-bl/stylized-grass1_roughness.png"
-dest_files=["res://.godot/imported/stylized-grass1_roughness.png-593f1082aebf891f69390b23977ca64e.s3tc.ctex"]
+dest_files=["res://.godot/imported/stylized-grass1_roughness.png-593f1082aebf891f69390b23977ca64e.s3tc.ctex", "res://.godot/imported/stylized-grass1_roughness.png-593f1082aebf891f69390b23977ca64e.etc2.ctex"]
 
 [params]
 

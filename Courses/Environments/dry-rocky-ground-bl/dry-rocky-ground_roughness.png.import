@@ -4,15 +4,16 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://ug8r5j02fygs"
 path.s3tc="res://.godot/imported/dry-rocky-ground_roughness.png-6d2e79673ae1d2921e86945caa524d63.s3tc.ctex"
+path.etc2="res://.godot/imported/dry-rocky-ground_roughness.png-6d2e79673ae1d2921e86945caa524d63.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 
 [deps]
 
 source_file="res://Courses/Environments/dry-rocky-ground-bl/dry-rocky-ground_roughness.png"
-dest_files=["res://.godot/imported/dry-rocky-ground_roughness.png-6d2e79673ae1d2921e86945caa524d63.s3tc.ctex"]
+dest_files=["res://.godot/imported/dry-rocky-ground_roughness.png-6d2e79673ae1d2921e86945caa524d63.s3tc.ctex", "res://.godot/imported/dry-rocky-ground_roughness.png-6d2e79673ae1d2921e86945caa524d63.etc2.ctex"]
 
 [params]
 

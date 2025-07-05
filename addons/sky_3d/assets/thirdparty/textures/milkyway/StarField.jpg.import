@@ -4,15 +4,16 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://bm7dot7t7u1q4"
 path.s3tc="res://.godot/imported/StarField.jpg-9d224e20fcbe8fdc7ff5028dae269839.s3tc.ctex"
+path.etc2="res://.godot/imported/StarField.jpg-9d224e20fcbe8fdc7ff5028dae269839.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 
 [deps]
 
 source_file="res://addons/sky_3d/assets/thirdparty/textures/milkyway/StarField.jpg"
-dest_files=["res://.godot/imported/StarField.jpg-9d224e20fcbe8fdc7ff5028dae269839.s3tc.ctex"]
+dest_files=["res://.godot/imported/StarField.jpg-9d224e20fcbe8fdc7ff5028dae269839.s3tc.ctex", "res://.godot/imported/StarField.jpg-9d224e20fcbe8fdc7ff5028dae269839.etc2.ctex"]
 
 [params]
 
