@@ -1,0 +1,32 @@
+[gd_scene load_steps=6 format=3 uid="uid://cttj0qnu3tch2"]
+
+[ext_resource type="PackedScene" uid="uid://cuycob4wiy4kx" path="res://Courses/Environments/trees/AspenRed1.glb" id="1_k51j1"]
+[ext_resource type="Shader" uid="uid://bbggjmntriw5l" path="res://Courses/Environments/Shaders/trees_shader.gdshader" id="2_32e3o"]
+[ext_resource type="Texture2D" uid="uid://30a718r7vm6j" path="res://Courses/Environments/trees/AspenRed1_4.png" id="3_1yv08"]
+[ext_resource type="Texture2D" uid="uid://4fm0o6iu6vkn" path="res://Courses/Environments/trees/AspenRed1_3.png" id="4_0mes7"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_k51j1"]
+render_priority = 0
+shader = ExtResource("2_32e3o")
+shader_parameter/albedo = Color(0.999968, 0.585634, 0.524746, 1)
+shader_parameter/texture_albedo = ExtResource("3_1yv08")
+shader_parameter/point_size = 0.0
+shader_parameter/roughness = 1.0
+shader_parameter/metallic_texture_channel = Vector4(0, 0, 0, 0)
+shader_parameter/texture_roughness = ExtResource("4_0mes7")
+shader_parameter/specular = 0.13
+shader_parameter/metallic = 0.0
+shader_parameter/normal_scale = 1.5
+shader_parameter/backlight = Color(0, 0, 0, 1)
+shader_parameter/uv1_scale = Vector3(1, 1, 1)
+shader_parameter/uv1_offset = Vector3(0, 0, 0)
+shader_parameter/uv2_scale = Vector3(1, 1, 1)
+shader_parameter/uv2_offset = Vector3(0, 0, 0)
+shader_parameter/sway_speed = 0.5
+shader_parameter/sway_strength = 0.5
+shader_parameter/sway_phase_len = 0.5
+
+[node name="AuxScene" instance=ExtResource("1_k51j1")]
+
+[node name="Mesh2" parent="Tree" index="1"]
+surface_material_override/0 = SubResource("ShaderMaterial_k51j1")

@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://da1vsfwmbk8vw"]
+[gd_scene load_steps=6 format=3 uid="uid://da1vsfwmbk8vw"]
 
 [ext_resource type="Script" uid="uid://dginc6hghigy3" path="res://UI/range_ui.gd" id="1_kur1t"]
 [ext_resource type="PackedScene" uid="uid://bxqjwaed60ykh" path="res://UI/data_panel.tscn" id="1_q72xt"]
 [ext_resource type="PackedScene" uid="uid://xwb2lctkdfv5" path="res://UI/ClubSelector/club_selector.tscn" id="3_crlyb"]
 [ext_resource type="PackedScene" uid="uid://bixsmx2mhvyyx" path="res://UI/SessionPopUp/session_pop_up.tscn" id="4_7kh1v"]
+[ext_resource type="Script" uid="uid://bqbmkqgfa2s4d" path="res://UI/grid_canvas.gd" id="5_rfb4h"]
 
 [node name="RangeUI" type="MarginContainer"]
 anchors_preset = 15
@@ -78,6 +79,10 @@ units = "deg"
 
 [node name="SessionPopUp" parent="." instance=ExtResource("4_7kh1v")]
 layout_mode = 2
+
+[node name="GridCanvas" type="Control" parent="."]
+layout_mode = 2
+script = ExtResource("5_rfb4h")
 
 [connection signal="club_selected" from="HBoxContainer/ClubSelector" to="." method="_on_club_selector_club_selected"]
 [connection signal="pressed" from="HBoxContainer/RecButton" to="." method="_on_rec_button_pressed"]

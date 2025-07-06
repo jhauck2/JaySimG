@@ -1,11 +1,21 @@
 extends MarginContainer
 
+var show_grid := false
+#const CELL_SIZE = Vector2(120, 93)
+#const GRID_SPACING = Vector2(10, 10)
+#const GRID_SIZE = CELL_SIZE + GRID_SPACING
+
 signal rec_button_pressed
 signal club_selected(club: String)
 signal set_session(dir: String, player_name: String)
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	await get_tree().process_frame
+	load_layout()
+	for panel in $VBoxContainer.get_children():
+		panel.connect("drag_started", Callable(self, "_on_panel_drag_started"))
+		panel.connect("drag_ended", Callable(self, "_on_panel_drag_ended"))
 	pass # Replace with function body.
 
 
@@ -51,3 +61,37 @@ func _on_session_pop_up_dir_selected(dir: String, player_name: String) -> void:
 func _on_session_recorder_set_session(user: String, dir: String) -> void:
 	$HBoxContainer/PlayerName.text = user
 	$SessionPopUp.set_session_data(user, dir)
+	
+var _edit_mode := true
+
+func toggle_edit_mode():
+	_edit_mode = !_edit_mode
+	for panel in $VBoxContainer.get_children():
+		panel.set_editable(_edit_mode)
+
+func save_layout():
+	var config = ConfigFile.new()
+	for panel in $VBoxContainer.get_children():
+		config.set_value("positions", panel.name, panel.position)
+	config.save("user://layout.cfg")
+
+func load_layout():
+	var config = ConfigFile.new()
+	if config.load("user://layout.cfg") == OK:
+		for panel in $VBoxContainer.get_children():
+			if config.has_section_key("positions", panel.name):  # <-- not "layout"
+				panel.position = config.get_value("positions", panel.name)
+				
+
+func _on_panel_drag_started():
+	$GridCanvas.show_grid = true
+	$GridCanvas.queue_redraw()
+
+func _on_panel_drag_ended():
+	$GridCanvas.show_grid = false
+	$GridCanvas.queue_redraw()
+	
+func _notification(what):
+	if what == NOTIFICATION_WM_CLOSE_REQUEST:
+		save_layout()
+		get_tree().quit()  # Actually close the game after saving
