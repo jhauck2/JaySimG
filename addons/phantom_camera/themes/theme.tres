@@ -1,6 +1,5 @@
-[gd_resource type="Theme" load_steps=12 format=3 uid="uid://bhppejri5dbsf"]
+[gd_resource type="Theme" load_steps=11 format=3 uid="uid://bhppejri5dbsf"]
 
-[ext_resource type="FontFile" uid="uid://dve7mgsjik4dg" path="res://addons/phantom_camera/fonts/Nunito-Regular.ttf" id="1_5rtjh"]
 [ext_resource type="StyleBox" uid="uid://5weqvkjsfso3" path="res://addons/phantom_camera/themes/button_hover.tres" id="2_du6h5"]
 [ext_resource type="StyleBox" uid="uid://bclbwo3xrdat0" path="res://addons/phantom_camera/themes/button_normal.tres" id="3_a8j1f"]
 
@@ -77,7 +76,6 @@ border_width_right = 4
 border_color = Color(0.8, 0.8, 0.8, 0)
 
 [resource]
-default_font = ExtResource("1_5rtjh")
 Button/colors/font_color = Color(0.227451, 0.72549, 0.603922, 1)
 Button/colors/font_focus_color = Color(0.0784314, 0.109804, 0.129412, 1)
 Button/colors/font_hover_color = Color(0.0784314, 0.109804, 0.129412, 1)

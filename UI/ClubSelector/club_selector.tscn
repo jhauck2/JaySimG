@@ -1,9 +1,9 @@
 [gd_scene load_steps=5 format=3 uid="uid://xwb2lctkdfv5"]
 
 [ext_resource type="Script" uid="uid://7qixaoi6dbvj" path="res://UI/ClubSelector/club_selector.gd" id="1_bim0c"]
-[ext_resource type="Texture2D" uid="uid://b0rbrindpeiks" path="res://UI/ClubSelector/LClubSelect.png" id="1_cxupd"]
+[ext_resource type="Texture2D" uid="uid://bekfc0lhs3bd" path="res://UI/ClubSelector/LClubSelect.png" id="1_cxupd"]
 [ext_resource type="Script" uid="uid://dbhxqo4o8hkay" path="res://UI/ClubSelector/club_indicator.gd" id="1_tf82b"]
-[ext_resource type="Texture2D" uid="uid://tivdhmwmvg81" path="res://UI/ClubSelector/RClubSelect.png" id="3_bim0c"]
+[ext_resource type="Texture2D" uid="uid://dm720ku0m20d5" path="res://UI/ClubSelector/RClubSelect.png" id="3_bim0c"]
 
 [node name="ClubSelector" type="HBoxContainer"]
 offset_right = 162.0
