@@ -2,9 +2,10 @@ extends PanelContainer
 @export var label: String = "Label"
 @export var data: String = "---"
 @export var units: String = "units"
-@onready var grid_canvas = get_node("/root/Range/RangeUI/GridCanvas")
 signal drag_started
-signal drag_ended
+signal drag_ended(panel)
+var dragging := false
+var drag_offset := Vector2.ZERO
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -32,9 +33,6 @@ func set_units(u: String):
 	units = u
 	$VBoxContainer/Units.text = units
 	
-var dragging := false
-var drag_offset := Vector2.ZERO
-
 func _gui_input(event):
 	if event is InputEventMouseButton:
 		if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT:
@@ -43,8 +41,7 @@ func _gui_input(event):
 				dragging = true
 				drag_offset = get_global_mouse_position() - global_position
 			else:
-				emit_signal("drag_ended")
+				emit_signal("drag_ended", self)
 				dragging = false
-				grid_canvas.snap_to_grid(self)
 	elif event is InputEventMouseMotion and dragging:
 		global_position = get_global_mouse_position() - drag_offset

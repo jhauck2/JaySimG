@@ -1,6 +1,7 @@
 extends Control
 
 var show_grid := false
+var _edit_mode := true
 const CELL_SIZE = Vector2(120, 93)
 const GRID_SPACING = Vector2(10, 10)
 const GRID_SIZE = CELL_SIZE + GRID_SPACING
@@ -10,9 +11,8 @@ func _draw():
 	if not show_grid:
 		return
 
-	var container = get_node("../VBoxContainer")
-	var padding_correction := Vector2(0, 20)  # Adjust Y as needed
-	var offset = container.global_position - global_position + padding_correction
+	var padding_correction := Vector2(0, 0)  # Adjust Y as needed
+	var offset = global_position - global_position + padding_correction
 	var size = get_viewport_rect().size
 	var origin = Vector2(0, 0)  # if we need to offset the grid (x+10 for the top)
 	for x in range(0, size.x, GRID_SIZE.x):
@@ -39,8 +39,6 @@ func snap_to_grid(panel: Control):
 	var global_snap_y = round((panel.global_position.y - GRID_ORIGIN.y) / GRID_SIZE.y) * GRID_SIZE.y + GRID_ORIGIN.y
 	panel.global_position = Vector2(global_snap_x, global_snap_y)
 
-var _edit_mode := true
-
 func toggle_edit_mode():
 	_edit_mode = !_edit_mode
 	for panel in $VBoxContainer.get_children():
@@ -48,16 +46,14 @@ func toggle_edit_mode():
 
 func save_layout():
 	var config = ConfigFile.new()
-	var container = get_node("../VBoxContainer")  # Adjust path as needed
-	for panel in container.get_children():
+	for panel in get_children():
 		config.set_value("positions", panel.name, panel.position)
 	config.save("user://layout.cfg")
 
 func load_layout():
 	var config = ConfigFile.new()
 	if config.load("user://layout.cfg") == OK:
-		var container = get_node("../VBoxContainer")  # Adjust path as needed
-		for panel in container.get_children():
+		for panel in get_children():
 			if config.has_section_key("positions", panel.name):  # <-- not "layout"
 				panel.position = config.get_value("positions", panel.name)
 				
@@ -65,9 +61,10 @@ func _on_panel_drag_started():
 	show_grid = true
 	queue_redraw()
 
-func _on_panel_drag_ended():
+func _on_panel_drag_ended(panel):
 	show_grid = false
 	queue_redraw()
+	snap_to_grid(panel)
 	
 func _notification(what):
 	if what == NOTIFICATION_WM_CLOSE_REQUEST:
