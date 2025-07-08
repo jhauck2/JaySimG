@@ -1,11 +1,14 @@
 extends MarginContainer
 
+var show_grid := false
 signal rec_button_pressed
 signal club_selected(club: String)
 signal set_session(dir: String, player_name: String)
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	await get_tree().process_frame
+	$GridCanvas.load_layout()
 	pass # Replace with function body.
 
 
