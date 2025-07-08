@@ -13,14 +13,14 @@ func _draw():
 
 	var padding_correction := Vector2(0, 0)  # Adjust Y as needed
 	var offset = global_position - global_position + padding_correction
-	var size = get_viewport_rect().size
+	var viewport_size = get_viewport_rect().size
 	var origin = Vector2(0, 0)  # if we need to offset the grid (x+10 for the top)
-	for x in range(0, size.x, GRID_SIZE.x):
+	for x in range(0, viewport_size.x, GRID_SIZE.x):
 		var grid_x = x + offset.x + origin.x
-		draw_line(Vector2(grid_x, 0), Vector2(grid_x, size.y), Color.GRAY)
-	for y in range(0, size.y, GRID_SIZE.y):
+		draw_line(Vector2(grid_x, 0), Vector2(grid_x, viewport_size.y), Color.GRAY)
+	for y in range(0, viewport_size.y, GRID_SIZE.y):
 		var grid_y = y + offset.y + origin.y
-		draw_line(Vector2(0, grid_y), Vector2(size.x, grid_y), Color.GRAY)
+		draw_line(Vector2(0, grid_y), Vector2(viewport_size.x, grid_y), Color.GRAY)
 
 func _ready():
 	load_layout()
