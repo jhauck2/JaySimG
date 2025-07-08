@@ -15,12 +15,12 @@ func _process(_delta: float) -> void:
 
 
 func set_data(data: Dictionary) -> void:
-	$VBoxContainer/Distance.set_data(data["Distance"])
-	$VBoxContainer/Carry.set_data(data["Carry"])
-	$VBoxContainer/Offline.set_data(data["Offline"])
-	$VBoxContainer/Apex.set_data(data["Apex"])
-	$VBoxContainer/VLA.set_data("%3.1f" % data["VLA"])
-	$VBoxContainer/HLA.set_data("%3.1f" % data["HLA"])
+	$GridCanvas/Distance.set_data(data["Distance"])
+	$GridCanvas/Carry.set_data(data["Carry"])
+	$GridCanvas/Offline.set_data(data["Offline"])
+	$GridCanvas/Apex.set_data(data["Apex"])
+	$GridCanvas/VLA.set_data("%3.1f" % data["VLA"])
+	$GridCanvas/HLA.set_data("%3.1f" % data["HLA"])
 
 
 func _on_rec_button_pressed() -> void:
