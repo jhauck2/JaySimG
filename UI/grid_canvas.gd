@@ -23,16 +23,7 @@ func _draw():
 		draw_line(Vector2(0, grid_y), Vector2(size.x, grid_y), Color.GRAY)
 
 func _ready():
-	# Force GridCanvas to stretch to fill its parent (RangeUI)
-	anchor_left = 0.0
-	anchor_top = 0.0
-	anchor_right = 1.0
-	anchor_bottom = 1.0
-
-	offset_left = 0.0
-	offset_top = 0.0
-	offset_right = 0.0
-	offset_bottom = 0.0
+	load_layout()
 
 func snap_to_grid(panel: Control):
 	var global_snap_x = round((panel.global_position.x - GRID_ORIGIN.x) / GRID_SIZE.x) * GRID_SIZE.x + GRID_ORIGIN.x
