@@ -1,5 +1,9 @@
 # JaySimG
-Golf Sim built using Godot
+Golf Sim built using Godot  
+  
+This golf sim is meant to interface with the PiTrac Launch Monitor  
+You can find their github page here: https://github.com/jamespilgrim/PiTrac  
+  
 ***WARNING*** - This is software is pre-pre-pre-alpha. You should expect it to break and be buggy.  
 
 ## Build Instructions
