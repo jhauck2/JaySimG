@@ -29,11 +29,15 @@ func _on_rec_button_pressed() -> void:
 
 func _on_session_recorder_recording_state(value: bool) -> void:
 	if value:
+		var red = Color(1.0, 0.0, 0.0, 1.0)
 		$HBoxContainer/RecButton.text = "REC: On"
+		$HBoxContainer/RecButton.set("theme_override_colors/font_color", red)
 		$HBoxContainer/RecButton.tooltip_text = "Stop Recording Range Session"
 		$SessionPopUp.open()
 	else:
+		var white = Color(1.0, 1.0, 1.0, 1.0)
 		$HBoxContainer/RecButton.text = "REC: Off"
+		$HBoxContainer/RecButton.set("theme_override_colors/font_color", white)
 		$HBoxContainer/RecButton.tooltip_text = "Start Recording Range Session"
 
 
