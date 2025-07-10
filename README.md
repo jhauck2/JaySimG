@@ -7,12 +7,14 @@ You can find their github page here: https://github.com/jamespilgrim/PiTrac
 ### Current State
 Launch Monitor Support:  
 - At this point, the golf sim only supports connections to a PiTrac launch monitor.
-Sim Features: 
+  
+Sim Features:  
 - The golf sim features a range mode with data readouts, club selection, and range session recording. There are a few more range features being planned at the momemnt but feel free to open an issue with any suggestions or areas of improvement.  
   
 ### Future State
 Launch Monitor Support:  
 - There is no current plan to support any commercial launch monitors but we welcome any ideas or contributions in this area.
+  
 Sim Features:
 - As for full golf course play, this is the next major milestone in this project's development. Details on implementation are sparse if not non-existent. Initial planning and architecting of this feature will be starting soon. Stay tuned!
 
