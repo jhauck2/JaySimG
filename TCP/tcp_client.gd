@@ -9,7 +9,7 @@ var tcp_string : String = ""
 var shot_data : Dictionary
 
 var resp_200 := {"Code" : 200}
-var resp_201 := {"Code": 201, "Message": "JaySimG Player Information"}
+var resp_201 := {"Code": 201, "Message": "OSG Player Information"}
 var resp_50x := {"Code": 501, "Message": "Failure Occured"}
 
 signal hit_ball(data:Dictionary)
