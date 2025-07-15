@@ -1,4 +1,5 @@
 # Open Shot Golf Simulator
+![img missing](https://github.com/jhauck2/OpenShotGolf/blob/main/Screenshots/Screenshot_20250715_152214.png)
 ## Introduction
 Welcome to Open Shot Golf (formerly JaySimG)!  
   
