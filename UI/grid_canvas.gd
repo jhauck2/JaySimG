@@ -43,10 +43,13 @@ func save_layout():
 
 func load_layout():
 	var config = ConfigFile.new()
-	if config.load("user://layout.cfg") == OK:
-		for panel in get_children():
-			if config.has_section_key("positions", panel.name):  # <-- not "layout"
-				panel.position = config.get_value("positions", panel.name)
+	if config.load("user://layout.cfg") != OK: # User does not have a saved config
+		config.load("res://UI/default_layout.cfg") # Load default config
+		
+	for panel in get_children():
+		if config.has_section_key("positions", panel.name):  # <-- not "layout"
+			panel.position = config.get_value("positions", panel.name)
+	
 				
 func _on_panel_drag_started():
 	show_grid = true
