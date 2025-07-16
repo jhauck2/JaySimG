@@ -4,24 +4,24 @@
 [ext_resource type="Script" uid="uid://bg5tbfjpq3flx" path="res://TCP/tcp_client.gd" id="2_d1a0v"]
 [ext_resource type="PackedScene" uid="uid://w55fmvo7ly8g" path="res://Ball/golf_ball.tscn" id="3_4jr3s"]
 [ext_resource type="PackedScene" uid="uid://da1vsfwmbk8vw" path="res://UI/range_ui.tscn" id="4_d1a0v"]
-[ext_resource type="Texture2D" uid="uid://cmlil8bwuil8h" path="res://Courses/Environments/grassy-meadow1-bl/grassy-meadow1_alb_ht.png" id="5_6rpr1"]
+[ext_resource type="Texture2D" uid="uid://bfg6bvcr862wu" path="res://Courses/Environments/grassy-meadow1-bl/grassy-meadow1_alb_ht.png" id="5_6rpr1"]
 [ext_resource type="Shader" uid="uid://cvd0x7lon1ur6" path="res://addons/sky_3d/shaders/SkyMaterial.gdshader" id="5_k478i"]
-[ext_resource type="Texture2D" uid="uid://bc52hievyygxd" path="res://addons/sky_3d/assets/thirdparty/textures/milkyway/Milkyway.jpg" id="6_1cdky"]
-[ext_resource type="Texture2D" uid="uid://bhwl1wbs62tw4" path="res://Courses/Environments/grassy-meadow1-bl/grassy-meadow1_nrm_rgh-ogl.png" id="6_til7k"]
+[ext_resource type="Texture2D" uid="uid://ddkhm1blg7fw8" path="res://addons/sky_3d/assets/thirdparty/textures/milkyway/Milkyway.jpg" id="6_1cdky"]
+[ext_resource type="Texture2D" uid="uid://yogmwmf55hx8" path="res://Courses/Environments/grassy-meadow1-bl/grassy-meadow1_nrm_rgh-ogl.png" id="6_til7k"]
 [ext_resource type="Texture2D" uid="uid://cfqk60lpl5ljv" path="res://addons/sky_3d/assets/resources/SNoise.tres" id="7_lv8u7"]
-[ext_resource type="Texture2D" uid="uid://duyqkh8aovmfa" path="res://Courses/Environments/jagged-rocky-ground1-bl/jagged-rocky-ground_alb_ht.png" id="7_oe2rx"]
-[ext_resource type="Texture2D" uid="uid://bncb38jom4w3j" path="res://addons/sky_3d/assets/textures/noiseClouds.png" id="8_oal5e"]
-[ext_resource type="Texture2D" uid="uid://blis67gij5qpq" path="res://Courses/Environments/jagged-rocky-ground1-bl/jagged-rocky-ground_nrm_rgh-ogl.png" id="8_ocquq"]
-[ext_resource type="Texture2D" uid="uid://bdtjrwo1ujlkl" path="res://addons/sky_3d/assets/thirdparty/textures/moon/MoonMap.png" id="9_i3bow"]
-[ext_resource type="Texture2D" uid="uid://c1ndfih52xvep" path="res://addons/sky_3d/assets/textures/noise.jpg" id="10_gqfs3"]
-[ext_resource type="Texture2D" uid="uid://dc6q6jxe72lvy" path="res://addons/sky_3d/assets/thirdparty/textures/milkyway/StarField.jpg" id="11_hbh3r"]
+[ext_resource type="Texture2D" uid="uid://nhwtpei3iccf" path="res://Courses/Environments/jagged-rocky-ground1-bl/jagged-rocky-ground_alb_ht.png" id="7_oe2rx"]
+[ext_resource type="Texture2D" uid="uid://duurlp5knnej7" path="res://addons/sky_3d/assets/textures/noiseClouds.png" id="8_oal5e"]
+[ext_resource type="Texture2D" uid="uid://bdyviu4pkswx4" path="res://Courses/Environments/jagged-rocky-ground1-bl/jagged-rocky-ground_nrm_rgh-ogl.png" id="8_ocquq"]
+[ext_resource type="Texture2D" uid="uid://ihtahk6na1dc" path="res://addons/sky_3d/assets/thirdparty/textures/moon/MoonMap.png" id="9_i3bow"]
+[ext_resource type="Texture2D" uid="uid://cg1lppik1oupg" path="res://addons/sky_3d/assets/textures/noise.jpg" id="10_gqfs3"]
+[ext_resource type="Texture2D" uid="uid://bfcspwcefdnk3" path="res://addons/sky_3d/assets/thirdparty/textures/milkyway/StarField.jpg" id="11_hbh3r"]
 [ext_resource type="Script" uid="uid://deo0gxkmk2ahd" path="res://addons/sky_3d/src/Sky3D.gd" id="12_6rpr1"]
 [ext_resource type="Script" uid="uid://b4tkplvh7fq40" path="res://addons/sky_3d/src/Skydome.gd" id="13_til7k"]
 [ext_resource type="Script" uid="uid://cjmkcj8hwm7ts" path="res://addons/sky_3d/src/TimeOfDay.gd" id="14_oe2rx"]
 [ext_resource type="Script" uid="uid://csjccrhj5wnx7" path="res://addons/phantom_camera/scripts/phantom_camera/phantom_camera_3d.gd" id="17_i3bow"]
 [ext_resource type="Script" uid="uid://8umksf8e80fw" path="res://addons/phantom_camera/scripts/resources/tween_resource.gd" id="18_gqfs3"]
 [ext_resource type="Script" uid="uid://bd046eokvcnu2" path="res://addons/phantom_camera/scripts/phantom_camera_host/phantom_camera_host.gd" id="19_gqfs3"]
-[ext_resource type="Texture2D" uid="uid://d4b0ncaji4vcu" path="res://Courses/Range/Range_Distances.png" id="20_hbh3r"]
+[ext_resource type="Texture2D" uid="uid://ct7pgab8pc8pl" path="res://Courses/Range/Range_Distances.png" id="20_hbh3r"]
 [ext_resource type="Script" uid="uid://c521mpxrgwa74" path="res://SessionRecorder/session_recorder.gd" id="21_6rpr1"]
 
 [sub_resource type="Gradient" id="Gradient_ocquq"]
@@ -142,7 +142,7 @@ shader_parameter/background_color = Color(0.709804, 0.709804, 0.709804, 0.854902
 shader_parameter/stars_field_color = Color(1, 1, 1, 1)
 shader_parameter/stars_field_texture = ExtResource("11_hbh3r")
 shader_parameter/sky_alignment = Vector3(2.6555, -0.23935, 0.4505)
-shader_parameter/sky_rotation = -8.38047
+shader_parameter/sky_rotation = -8.45882
 shader_parameter/sky_tilt = -1.29154
 shader_parameter/stars_scintillation = 0.75
 shader_parameter/stars_scintillation_speed = 0.01
@@ -177,8 +177,8 @@ shader_parameter/cumulus_clouds_horizon_light_color = Color(0.98, 0.43, 0.15, 1)
 shader_parameter/cumulus_clouds_night_color = Color(0.090196, 0.094118, 0.129412, 1)
 shader_parameter/cumulus_clouds_partial_mie_phase = Vector3(0.957564, 1.04244, 0.412)
 shader_parameter/cumulus_clouds_mie_intensity = 1.0
-shader_parameter/moon_matrix = Basis(0, -0.361424, 0.932402, -0.455554, 0.830032, 0.321743, -0.890208, -0.424759, -0.164648)
-shader_parameter/deep_space_matrix = Basis(0.502506, -0.864574, 0, -0.23831, -0.13851, -0.961262, 0.831081, 0.48304, -0.275638)
+shader_parameter/moon_matrix = Basis(0, -0.3566, 0.934257, -0.518963, 0.7986, 0.304821, -0.854796, -0.484845, -0.185063)
+shader_parameter/deep_space_matrix = Basis(0.568631, -0.822593, -5.96046e-08, -0.226738, -0.156736, -0.961261, 0.790727, 0.546603, -0.275638)
 
 [sub_resource type="Sky" id="Sky_rybw1"]
 sky_material = SubResource("ShaderMaterial_0yxxa")
@@ -187,7 +187,7 @@ sky_material = SubResource("ShaderMaterial_0yxxa")
 background_mode = 2
 sky = SubResource("Sky_rybw1")
 ambient_light_source = 3
-ambient_light_color = Color(1, 1, 1, 1)
+ambient_light_color = Color(0.963192, 0.963192, 0.963192, 1)
 reflected_light_source = 2
 tonemap_mode = 3
 tonemap_white = 6.0
@@ -228,29 +228,31 @@ metadata/_edit_lock_ = true
 environment = SubResource("Environment_2xe6u")
 camera_attributes = SubResource("CameraAttributesPractical_ainke")
 script = ExtResource("12_6rpr1")
-current_time = 15.3835
+enable_editor_time = false
+current_time = 15.682
 metadata/_custom_type_script = "uid://deo0gxkmk2ahd"
 
 [node name="SunLight" type="DirectionalLight3D" parent="Sky3D"]
-transform = Transform3D(0, -0.654196, -0.756325, -0.312108, -0.718544, 0.621517, -0.950047, 0.236055, -0.204179, -0.756325, 0.621517, -0.204179)
+transform = Transform3D(0, -0.604978, -0.796243, -0.365198, -0.741246, 0.563192, -0.93093, 0.290786, -0.220937, -0.796243, 0.563192, -0.220937)
 shadow_enabled = true
 
 [node name="MoonLight" type="DirectionalLight3D" parent="Sky3D"]
-transform = Transform3D(0, -0.455554, -0.890208, -0.361424, 0.830032, -0.424759, 0.932402, 0.321743, -0.164648, -0.890208, -0.424759, -0.164648)
+transform = Transform3D(0, -0.518963, -0.854797, -0.3566, 0.7986, -0.484845, 0.934257, 0.304821, -0.185063, -0.854796, -0.484845, -0.185063)
 light_color = Color(0.572549, 0.776471, 0.956863, 1)
 light_energy = 0.0
 
 [node name="Skydome" type="Node" parent="Sky3D"]
 script = ExtResource("13_til7k")
-sun_azimuth = -285.107
-sun_altitude = -51.573
-moon_azimuth = -280.479
-moon_altitude = -115.135
+sun_azimuth = -285.508
+sun_altitude = -55.7232
+moon_azimuth = -282.216
+moon_altitude = -119.002
 
 [node name="TimeOfDay" type="Node" parent="Sky3D"]
 script = ExtResource("14_oe2rx")
+update_in_editor = false
 dome_path = NodePath("../Skydome")
-total_hours = 15.3835
+total_hours = 15.682
 day = 28
 month = 5
 
