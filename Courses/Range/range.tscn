@@ -1,7 +1,7 @@
 [gd_scene load_steps=38 format=3 uid="uid://b1idtxfp7eoke"]
 
 [ext_resource type="Script" uid="uid://c4whkfuiysonu" path="res://Courses/Range/range.gd" id="1_sunpe"]
-[ext_resource type="Script" uid="uid://bg5tbfjpq3flx" path="res://TCP/tcp_client.gd" id="2_d1a0v"]
+[ext_resource type="Script" uid="uid://bg5tbfjpq3flx" path="res://TCP/tcp_server.gd" id="2_d1a0v"]
 [ext_resource type="PackedScene" uid="uid://w55fmvo7ly8g" path="res://Ball/golf_ball.tscn" id="3_4jr3s"]
 [ext_resource type="PackedScene" uid="uid://da1vsfwmbk8vw" path="res://UI/range_ui.tscn" id="4_d1a0v"]
 [ext_resource type="Texture2D" uid="uid://bfg6bvcr862wu" path="res://Courses/Environments/grassy-meadow1-bl/grassy-meadow1_alb_ht.png" id="5_6rpr1"]
@@ -142,7 +142,7 @@ shader_parameter/background_color = Color(0.709804, 0.709804, 0.709804, 0.854902
 shader_parameter/stars_field_color = Color(1, 1, 1, 1)
 shader_parameter/stars_field_texture = ExtResource("11_hbh3r")
 shader_parameter/sky_alignment = Vector3(2.6555, -0.23935, 0.4505)
-shader_parameter/sky_rotation = -8.45882
+shader_parameter/sky_rotation = -8.45883
 shader_parameter/sky_tilt = -1.29154
 shader_parameter/stars_scintillation = 0.75
 shader_parameter/stars_scintillation_speed = 0.01
@@ -177,8 +177,8 @@ shader_parameter/cumulus_clouds_horizon_light_color = Color(0.98, 0.43, 0.15, 1)
 shader_parameter/cumulus_clouds_night_color = Color(0.090196, 0.094118, 0.129412, 1)
 shader_parameter/cumulus_clouds_partial_mie_phase = Vector3(0.957564, 1.04244, 0.412)
 shader_parameter/cumulus_clouds_mie_intensity = 1.0
-shader_parameter/moon_matrix = Basis(0, -0.3566, 0.934257, -0.518963, 0.7986, 0.304821, -0.854796, -0.484845, -0.185063)
-shader_parameter/deep_space_matrix = Basis(0.568631, -0.822593, -5.96046e-08, -0.226738, -0.156736, -0.961261, 0.790727, 0.546603, -0.275638)
+shader_parameter/moon_matrix = Basis(0, -0.3566, 0.934257, -0.518973, 0.798594, 0.304818, -0.854791, -0.484854, -0.185066)
+shader_parameter/deep_space_matrix = Basis(0.568641, -0.822586, -2.98023e-08, -0.226736, -0.156739, -0.961262, 0.79072, 0.546613, -0.275638)
 
 [sub_resource type="Sky" id="Sky_rybw1"]
 sky_material = SubResource("ShaderMaterial_0yxxa")
@@ -187,7 +187,7 @@ sky_material = SubResource("ShaderMaterial_0yxxa")
 background_mode = 2
 sky = SubResource("Sky_rybw1")
 ambient_light_source = 3
-ambient_light_color = Color(0.963192, 0.963192, 0.963192, 1)
+ambient_light_color = Color(0.963182, 0.963182, 0.963182, 1)
 reflected_light_source = 2
 tonemap_mode = 3
 tonemap_white = 6.0
@@ -203,7 +203,7 @@ ease = 2
 [node name="Range" type="Node3D"]
 script = ExtResource("1_sunpe")
 
-[node name="TCPClient" type="Node" parent="."]
+[node name="TCPServer" type="Node" parent="."]
 script = ExtResource("2_d1a0v")
 
 [node name="GolfBall" parent="." instance=ExtResource("3_4jr3s")]
@@ -233,20 +233,20 @@ current_time = 15.682
 metadata/_custom_type_script = "uid://deo0gxkmk2ahd"
 
 [node name="SunLight" type="DirectionalLight3D" parent="Sky3D"]
-transform = Transform3D(0, -0.604978, -0.796243, -0.365198, -0.741246, 0.563192, -0.93093, 0.290786, -0.220937, -0.796243, 0.563192, -0.220937)
+transform = Transform3D(0, -0.60497, -0.796248, -0.365208, -0.741248, 0.563182, -0.930926, 0.290796, -0.22094, -0.796248, 0.563182, -0.22094)
 shadow_enabled = true
 
 [node name="MoonLight" type="DirectionalLight3D" parent="Sky3D"]
-transform = Transform3D(0, -0.518963, -0.854797, -0.3566, 0.7986, -0.484845, 0.934257, 0.304821, -0.185063, -0.854796, -0.484845, -0.185063)
+transform = Transform3D(0, -0.518973, -0.854791, -0.3566, 0.798595, -0.484854, 0.934257, 0.304818, -0.185066, -0.854791, -0.484854, -0.185066)
 light_color = Color(0.572549, 0.776471, 0.956863, 1)
 light_energy = 0.0
 
 [node name="Skydome" type="Node" parent="Sky3D"]
 script = ExtResource("13_til7k")
 sun_azimuth = -285.508
-sun_altitude = -55.7232
+sun_altitude = -55.7238
 moon_azimuth = -282.216
-moon_altitude = -119.002
+moon_altitude = -119.003
 
 [node name="TimeOfDay" type="Node" parent="Sky3D"]
 script = ExtResource("14_oe2rx")
@@ -315,9 +315,9 @@ text = "250
 [node name="SessionRecorder" type="Node" parent="."]
 script = ExtResource("21_6rpr1")
 
-[connection signal="hit_ball" from="TCPClient" to="." method="_on_tcp_client_hit_ball"]
-[connection signal="hit_ball" from="TCPClient" to="GolfBall" method="_on_tcp_client_hit_ball"]
-[connection signal="good_data" from="GolfBall" to="TCPClient" method="_on_golf_ball_good_data"]
+[connection signal="hit_ball" from="TCPServer" to="." method="_on_tcp_client_hit_ball"]
+[connection signal="hit_ball" from="TCPServer" to="GolfBall" method="_on_tcp_client_hit_ball"]
+[connection signal="good_data" from="GolfBall" to="TCPServer" method="_on_golf_ball_good_data"]
 [connection signal="rest" from="GolfBall" to="." method="_on_golf_ball_rest"]
 [connection signal="rest" from="GolfBall" to="SessionRecorder" method="_on_golf_ball_rest"]
 [connection signal="club_selected" from="RangeUI" to="SessionRecorder" method="_on_range_ui_club_selected"]
