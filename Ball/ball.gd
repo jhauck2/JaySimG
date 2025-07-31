@@ -71,9 +71,9 @@ func _physics_process(delta: float) -> void:
 		
 		# Magnus and drag coefficients
 		# original
-		var S : float = 0.5*rho*A*radius*(-3.25*spin+1.99)
+		#var S : float = 0.5*rho*A*radius*(-3.25*spin+1.99)
 		#first tweak
-		#var S : float = 0.5*rho*A*radius*(-2.4*spin+1.75)
+		var S : float = 0.5*rho*A*radius*(-2.722*spin+1.686)
 		
 		
 		var Cd := 0.0 # Drag coefficient
@@ -89,9 +89,9 @@ func _physics_process(delta: float) -> void:
 		if Re < 50000.0:
 			Cd = 0.6
 		elif Re < 87500.0:
-			Cd = 0.000000000129*Re*Re - 0.0000225*Re + 1.50
+			Cd = 0.0000000001418*Re*Re - 0.00002426*Re + 1.271
 		else:
-			Cd = 0.00000000001925*Re*Re - 0.0000052*Re + 0.56
+			Cd = 0.00000000002111*Re*Re - 0.000005632*Re + 0.621
 		
 		# Magnus force
 		F_m = omega.cross(velocity)*S
@@ -192,7 +192,7 @@ func hit():
 	position = Vector3(0.0, 0.05, 0.0)
 	velocity = Vector3(data["Speed"]*0.44704, 0, 0).rotated(
 					Vector3(0.0, 0.0, 1.0), data["VLA"]*PI/180.0).rotated(
-						Vector3(1.0, 0.0, 0.0), data["HLA"]*PI/180.0)
+						Vector3(0.0, 1.0, 0.0), data["HLA"]*PI/180.0)
 	omega = Vector3(0.0, 0.0, data["TotalSpin"]*0.10472).rotated(Vector3(1.0, 0.0, 0.0), -data["SpinAxis"]*PI/180)
 	
 func hit_from_data(data : Dictionary):
@@ -200,7 +200,7 @@ func hit_from_data(data : Dictionary):
 	position = Vector3(0.0, 0.05, 0.0)
 	velocity = Vector3(data["Speed"]*0.44704, 0, 0).rotated(
 					Vector3(0.0, 0.0, 1.0), data["VLA"]*PI/180.0).rotated(
-						Vector3(1.0, 0.0, 0.0), data["HLA"]*PI/180.0)
+						Vector3(0.0, 1.0, 0.0), data["HLA"]*PI/180.0)
 	omega = Vector3(0.0, 0.0, data["TotalSpin"]*0.10472).rotated(Vector3(1.0, 0.0, 0.0), -data["SpinAxis"]*PI/180)
 	
 	
