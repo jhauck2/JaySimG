@@ -10,7 +10,12 @@ Launch Monitor Support:
 - At this point, the golf sim only supports connections to a PiTrac launch monitor.
   
 Sim Features:  
-- The golf sim features a range mode with data readouts, club selection, and range session recording. There are a few more range features being planned at the momemnt but feel free to open an issue with any suggestions or areas of improvement.  
+- The golf sim features a range mode with data readouts, club selection, and range session recording. There are a few more range features being planned at the momemnt but feel free to open an issue with any suggestions or areas of improvement.
+
+Platforms:  
+- Linux
+- Windows
+- Mac (theoretically - this is untested).
   
 ### Future State
 Launch Monitor Support:  
@@ -18,6 +23,10 @@ Launch Monitor Support:
   
 Sim Features:
 - As for full golf course play, this is the next major milestone in this project's development. Details on implementation are sparse if not non-existent. Initial planning and architecting of this feature will be starting soon. Stay tuned!
+
+Platforms:  
+- Support is planned for Android and iOS although implementation has not yet started. It is currently possible to build the project for Android but this is untested.
+- Console support has been considered. If there is any demand for this we will consider implementation down the line. (This will likely be a big undertaking getting SDKs/dev consoles/accounts/etc.)  
 
 ## Build Instructions
 ### Install Godot
