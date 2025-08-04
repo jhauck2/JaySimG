@@ -1,10 +1,11 @@
-[gd_scene load_steps=6 format=3 uid="uid://da1vsfwmbk8vw"]
+[gd_scene load_steps=7 format=3 uid="uid://da1vsfwmbk8vw"]
 
 [ext_resource type="Script" uid="uid://dginc6hghigy3" path="res://UI/range_ui.gd" id="1_kur1t"]
 [ext_resource type="PackedScene" uid="uid://bxqjwaed60ykh" path="res://UI/data_panel.tscn" id="1_q72xt"]
 [ext_resource type="PackedScene" uid="uid://xwb2lctkdfv5" path="res://UI/ClubSelector/club_selector.tscn" id="3_crlyb"]
 [ext_resource type="PackedScene" uid="uid://bixsmx2mhvyyx" path="res://UI/SessionPopUp/session_pop_up.tscn" id="4_7kh1v"]
 [ext_resource type="Script" uid="uid://3iepiwkqvgs7" path="res://UI/grid_canvas.gd" id="5_rfb4h"]
+[ext_resource type="Script" uid="uid://cgdpaxem0op8k" path="res://UI/shot_injector.gd" id="6_j5yvw"]
 
 [node name="RangeUI" type="MarginContainer"]
 anchors_preset = 15
@@ -96,6 +97,61 @@ offset_bottom = 517.0
 label = "HLA"
 units = "deg"
 
+[node name="ShotInjector" type="VBoxContainer" parent="."]
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 4
+script = ExtResource("6_j5yvw")
+
+[node name="Speed" type="Label" parent="ShotInjector"]
+layout_mode = 2
+text = "Speed"
+
+[node name="SpeedText" type="TextEdit" parent="ShotInjector"]
+custom_minimum_size = Vector2(0, 35)
+layout_mode = 2
+placeholder_text = "0.0"
+
+[node name="SpinAxis" type="Label" parent="ShotInjector"]
+layout_mode = 2
+text = "SpinAxis"
+
+[node name="SpinAxisText" type="TextEdit" parent="ShotInjector"]
+custom_minimum_size = Vector2(0, 35)
+layout_mode = 2
+placeholder_text = "0.0"
+
+[node name="TotalSpin" type="Label" parent="ShotInjector"]
+layout_mode = 2
+text = "Total Spin"
+
+[node name="TotalSpinText" type="TextEdit" parent="ShotInjector"]
+custom_minimum_size = Vector2(0, 35)
+layout_mode = 2
+placeholder_text = "0.0"
+
+[node name="HLA" type="Label" parent="ShotInjector"]
+layout_mode = 2
+text = "HLA"
+
+[node name="HLAText" type="TextEdit" parent="ShotInjector"]
+custom_minimum_size = Vector2(0, 35)
+layout_mode = 2
+placeholder_text = "0.0"
+
+[node name="VLA" type="Label" parent="ShotInjector"]
+layout_mode = 2
+text = "VLA"
+
+[node name="VLAText" type="TextEdit" parent="ShotInjector"]
+custom_minimum_size = Vector2(0, 35)
+layout_mode = 2
+placeholder_text = "0.0"
+
+[node name="Button" type="Button" parent="ShotInjector"]
+layout_mode = 2
+text = "Hit Shot"
+
 [connection signal="club_selected" from="HBoxContainer/ClubSelector" to="." method="_on_club_selector_club_selected"]
 [connection signal="pressed" from="HBoxContainer/RecButton" to="." method="_on_rec_button_pressed"]
 [connection signal="dir_selected" from="SessionPopUp" to="." method="_on_session_pop_up_dir_selected"]
@@ -111,3 +167,5 @@ units = "deg"
 [connection signal="drag_started" from="GridCanvas/VLA" to="GridCanvas" method="_on_panel_drag_started"]
 [connection signal="drag_ended" from="GridCanvas/HLA" to="GridCanvas" method="_on_panel_drag_ended"]
 [connection signal="drag_started" from="GridCanvas/HLA" to="GridCanvas" method="_on_panel_drag_started"]
+[connection signal="inject" from="ShotInjector" to="." method="_on_shot_injector_inject"]
+[connection signal="pressed" from="ShotInjector/Button" to="ShotInjector" method="_on_button_pressed"]

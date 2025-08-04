@@ -98,3 +98,13 @@ func _on_tcp_client_hit_ball(data: Dictionary) -> void:
 	$BallTrail.call_deferred("clear_points")
 	$BallTrail.call_deferred("add_point", $Ball.position)
 	$Ball.call_deferred("hit_from_data", data)
+
+
+func _on_range_ui_hit_shot(data: Variant) -> void:
+	shot_data = data.duplicate()
+	
+	track_points = true
+	apex = 0
+	$BallTrail.call_deferred("clear_points")
+	$BallTrail.call_deferred("add_point", $Ball.position)
+	$Ball.call_deferred("hit_from_data", data)

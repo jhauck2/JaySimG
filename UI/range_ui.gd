@@ -4,6 +4,8 @@ signal rec_button_pressed
 signal club_selected(club: String)
 signal set_session(dir: String, player_name: String)
 
+signal hit_shot(data)
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	pass # Replace with function body.
@@ -55,3 +57,7 @@ func _on_session_pop_up_dir_selected(dir: String, player_name: String) -> void:
 func _on_session_recorder_set_session(user: String, dir: String) -> void:
 	$HBoxContainer/PlayerName.text = user
 	$SessionPopUp.set_session_data(user, dir)
+
+
+func _on_shot_injector_inject(data: Variant) -> void:
+	emit_signal("hit_shot", data)
