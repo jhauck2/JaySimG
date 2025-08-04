@@ -201,7 +201,7 @@ func hit_from_data(data : Dictionary):
 	velocity = Vector3(data["Speed"]*0.44704, 0, 0).rotated(
 					Vector3(0.0, 0.0, 1.0), data["VLA"]*PI/180.0).rotated(
 						Vector3(0.0, 1.0, 0.0), -data["HLA"]*PI/180.0)
-	omega = Vector3(0.0, 0.0, data["TotalSpin"]*0.10472).rotated(Vector3(1.0, 0.0, 0.0), -data["SpinAxis"]*PI/180)
+	omega = Vector3(0.0, 0.0, data["TotalSpin"]*0.10472).rotated(Vector3(1.0, 0.0, 0.0), data["SpinAxis"]*PI/180)
 	
 	
 func reset():
