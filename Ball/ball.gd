@@ -71,9 +71,9 @@ func _physics_process(delta: float) -> void:
 		
 		# Magnus and drag coefficients
 		# original
-		#var S : float = 0.5*rho*A*radius*(-3.25*spin+1.99)
+		var S : float = 0.5*rho*A*radius*(-3.25*spin+1.99)
 		#first tweak
-		var S : float = 0.5*rho*A*radius*(-2.722*spin+1.686)
+		#var S : float = 0.5*rho*A*radius*(-2.722*spin+1.686)
 		
 		
 		var Cd := 0.0 # Drag coefficient
@@ -96,7 +96,7 @@ func _physics_process(delta: float) -> void:
 		# Magnus force
 		F_m = omega.cross(velocity)*S
 		# Viscous Torque
-		T_d = -8.0*PI*mu*radius*radius*radius*omega
+		T_d = -6.0*PI*nu*radius*omega
 		
 		# Drag force
 		F_d = velocity*-speed*Cd*rho*A/2.0
@@ -193,7 +193,7 @@ func hit():
 	velocity = Vector3(data["Speed"]*0.44704, 0, 0).rotated(
 					Vector3(0.0, 0.0, 1.0), data["VLA"]*PI/180.0).rotated(
 						Vector3(0.0, 1.0, 0.0), -data["HLA"]*PI/180.0)
-	omega = Vector3(0.0, 0.0, data["TotalSpin"]*0.10472).rotated(Vector3(1.0, 0.0, 0.0), data["SpinAxis"]*PI/180)
+	omega = Vector3(0.0, 0.0, data["TotalSpin"]*0.10472).rotated(Vector3(1.0, 0.0, 0.0), data["SpinAxis"]*PI/180.0)
 	
 func hit_from_data(data : Dictionary):
 	state = Enums.BallState.FLIGHT
