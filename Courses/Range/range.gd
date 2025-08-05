@@ -6,6 +6,7 @@ var trail_resolution : float = 0.1
 var apex := 0
 var ball_data: Dictionary = {"Distance": "---", "Carry": "---", "Offline": "---", "Apex": "---", "VLA": 0.0, "HLA": 0.0}
 var ball_reset_time := 5.0
+var auto_reset_enabled := false
 
 
 # Called when the node enters the scene tree for the first time.
@@ -33,7 +34,8 @@ func _on_tcp_client_hit_ball(data: Dictionary) -> void:
 
 
 func _on_golf_ball_rest(_ball_data) -> void:
-	await get_tree().create_timer(ball_reset_time).timeout
-	$GolfBall.reset_ball()
-	ball_data["HLA"] = 0.0
-	ball_data["VLA"] = 0.0
+	if auto_reset_enabled:
+		await get_tree().create_timer(ball_reset_time).timeout
+		$GolfBall.reset_ball()
+		ball_data["HLA"] = 0.0
+		ball_data["VLA"] = 0.0
