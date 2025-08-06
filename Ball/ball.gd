@@ -71,27 +71,27 @@ func _physics_process(delta: float) -> void:
 		
 		# Magnus and drag coefficients
 		# original
-		var S : float = 0.5*rho*A*radius*(-3.25*spin+1.99)
+		#var S : float = 0.5*rho*A*radius*(-3.25*spin+1.99)
 		#first tweak
-		#var S : float = 0.5*rho*A*radius*(-5.349*spin+2.4298)
+		var S : float = 0.5*rho*A*radius*(-3.25*.6664*spin + 1.99*1.057)
 		
 		
 		var Cd := 0.0 # Drag coefficient
 		# Original
-		if Re < 50000.0:
-			Cd = 0.6
-		elif Re < 87500.0:
-			Cd = 0.000000000129*Re*Re - 0.0000259*Re + 1.50
-		else:
-			Cd = 0.0000000000191*Re*Re - 0.0000054*Re + 0.56
+		#if Re < 50000.0:
+			#Cd = 0.6
+		#elif Re < 87500.0:
+			#Cd = 0.000000000129*Re*Re - 0.0000259*Re + 1.50
+		#else:
+			#Cd = 0.0000000000191*Re*Re - 0.0000054*Re + 0.56
 			
 		# Tweaked
-		#if Re < 48500.0:
-			#Cd = 0.6
-		#elif Re < 83000.0:
-			#Cd = 0.0000000001838*Re*Re - 0.00002717*Re + 1.251
-		#else:
-			#Cd = 0.000000000008522*Re*Re - 0.000007625*Re + 0.9094
+		if Re < 50000.0:
+			Cd = 0.6*.8774
+		elif Re < 87500.0:
+			Cd = (0.000000000129*Re*Re*1.158 - 0.00002590*0.8676*Re + 1.50*0.8493)
+		else:
+			Cd = (0.0000000000191*.6871*Re*Re - 0.0000054*1.118*Re + 0.56*1.382)
 		
 		# Magnus force
 		F_m = omega.cross(velocity)*S
