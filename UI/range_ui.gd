@@ -61,3 +61,7 @@ func _on_session_recorder_set_session(user: String, dir: String) -> void:
 
 func _on_shot_injector_inject(data: Variant) -> void:
 	emit_signal("hit_shot", data)
+
+
+func _on_exit_button_pressed() -> void:
+	SceneManager.change_scene("res://UI/MainMenu/main_menu.tscn")
