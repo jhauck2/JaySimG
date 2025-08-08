@@ -11,12 +11,13 @@ config_version=5
 [application]
 
 config/name="OpenShotGolf"
-run/main_scene="uid://b1idtxfp7eoke"
+run/main_scene="uid://dgyd437dgyv0y"
 config/features=PackedStringArray("4.4", "Mobile")
 
 [autoload]
 
 PhantomCameraManager="*res://addons/phantom_camera/scripts/managers/phantom_camera_manager.gd"
+SceneManager="*res://SceneManager.gd"
 
 [display]
 
