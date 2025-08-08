@@ -14,7 +14,10 @@ static func get_Cl(Re: float, S: float) -> float:
 	if S < 0.05:
 		return 0.1
 	if S > .35:
-		return 0.765847 - 0.0000282533*Re + 3.20471e-10*Re*Re
+		if Re > 12.5e4:
+			return .13
+		else:
+			return -1.34786 + 0.0000369549*Re - 1.99478e-10*Re*Re
 	
 	# Low and high Reynolds number
 	if Re < 50000:
