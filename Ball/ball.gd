@@ -31,7 +31,7 @@ func _process(_delta: float) -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta: float) -> void:
-	on_ground = position.y < 0.022
+	on_ground = position.y < 0.03
 	
 	var F_g := Vector3(0.0, -9.81*mass, 0) # force of gravity
 	var F_m := Vector3.ZERO # Magnus force
@@ -60,7 +60,7 @@ func _physics_process(delta: float) -> void:
 			T_f = (floor_norm*-radius).cross(F_f)
 			
 		# Viscous Torque
-		T_g = omega.normalized()*-6.0*PI*radius*nu_g
+		T_g = -6.0*PI*nu_g*radius*omega
 	else: # ball in air
 		var speed := velocity.length()
 		var spin := 0.0
@@ -150,7 +150,7 @@ func bounce(vel, normal) -> Vector3:
 		
 	# normal restitution
 	var e : float = 0.0
-	if speed_norm < 20.0:
+	if speed_norm > 20.0:
 		e = 0.12
 	else:
 		e = 0.510 - 0.0375*speed_norm + 0.000903*speed_norm*speed_norm
