@@ -20,7 +20,7 @@ static func get_Cl(Re: float, S: float) -> float:
 	if Re < 50000:
 		return 0.1
 	if Re > 75000:
-		return .203 - 0.0000004167*Re
+		return .223 - 0.00000041*Re
 		
 	# Calculations
 	var Re_values: Array[int] = [50000, 60000, 65000, 70000, 75000]
