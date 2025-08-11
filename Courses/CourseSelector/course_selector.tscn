@@ -1,0 +1,147 @@
+[gd_scene load_steps=5 format=3 uid="uid://dr0gfofofdh2b"]
+
+[ext_resource type="Script" uid="uid://ccvtnhokw412d" path="res://Courses/CourseSelector/course_selector.gd" id="1_eghlt"]
+[ext_resource type="Script" uid="uid://f4w4aq3kcgu7" path="res://Courses/CourseSelector/course_directory_text.gd" id="1_os4aj"]
+[ext_resource type="Script" uid="uid://xcef4iu3er4x" path="res://Courses/CourseSelector/course_list.gd" id="2_eghlt"]
+[ext_resource type="Script" uid="uid://qe58f0ve1mcv" path="res://Courses/CourseSelector/players.gd" id="4_y1rf8"]
+
+[node name="CourseSelector" type="MarginContainer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
+script = ExtResource("1_eghlt")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 2
+theme_override_constants/separation = 16
+
+[node name="Title" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 50
+text = "Select a Course"
+
+[node name="CourseDirectory" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="VBoxContainer/CourseDirectory"]
+layout_mode = 2
+text = "Course Directory: "
+
+[node name="CourseDirectoryText" type="TextEdit" parent="VBoxContainer/CourseDirectory"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "res://Courses/UserCourses"
+script = ExtResource("1_os4aj")
+
+[node name="Control2" type="Control" parent="VBoxContainer/CourseDirectory"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 0.05
+
+[node name="Button" type="Button" parent="VBoxContainer/CourseDirectory"]
+layout_mode = 2
+text = "Load Courses"
+
+[node name="Control" type="Control" parent="VBoxContainer/CourseDirectory"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 0.5
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="ScrollContainer" type="ScrollContainer" parent="VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="CourseList" type="ItemList" parent="VBoxContainer/HBoxContainer2/ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_font_sizes/font_size = 30
+script = ExtResource("2_eghlt")
+
+[node name="Players" type="VBoxContainer" parent="VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 0.5
+script = ExtResource("4_y1rf8")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/HBoxContainer2/Players"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="VBoxContainer/HBoxContainer2/Players/HBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 40
+text = "Players"
+
+[node name="Control" type="Control" parent="VBoxContainer/HBoxContainer2/Players/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="AddButton" type="Button" parent="VBoxContainer/HBoxContainer2/Players/HBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 25
+text = "Add"
+
+[node name="Control2" type="Control" parent="VBoxContainer/HBoxContainer2/Players/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="RemoveButton" type="Button" parent="VBoxContainer/HBoxContainer2/Players/HBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 25
+text = "Remove"
+
+[node name="Control3" type="Control" parent="VBoxContainer/HBoxContainer2/Players/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="LineEdit" type="LineEdit" parent="VBoxContainer/HBoxContainer2/Players"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "Player 1"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+
+[node name="Control" type="Control" parent="VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="BackButton" type="Button" parent="VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_font_sizes/font_size = 30
+text = "Back to Main Menu"
+
+[node name="Control2" type="Control" parent="VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="PlayButton" type="Button" parent="VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_font_sizes/font_size = 30
+text = "Play Course"
+
+[node name="Control3" type="Control" parent="VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[connection signal="course_directory" from="VBoxContainer/CourseDirectory/CourseDirectoryText" to="VBoxContainer/HBoxContainer2/ScrollContainer/CourseList" method="parse_directory"]
+[connection signal="pressed" from="VBoxContainer/CourseDirectory/Button" to="VBoxContainer/CourseDirectory/CourseDirectoryText" method="verify_directory"]
+[connection signal="play_course" from="VBoxContainer/HBoxContainer2/ScrollContainer/CourseList" to="." method="_on_course_list_play_course"]
+[connection signal="send_players" from="VBoxContainer/HBoxContainer2/Players" to="VBoxContainer/HBoxContainer2/ScrollContainer/CourseList" method="_on_players_send_players"]
+[connection signal="pressed" from="VBoxContainer/HBoxContainer2/Players/HBoxContainer/AddButton" to="VBoxContainer/HBoxContainer2/Players" method="add_player"]
+[connection signal="pressed" from="VBoxContainer/HBoxContainer2/Players/HBoxContainer/RemoveButton" to="VBoxContainer/HBoxContainer2/Players" method="remove_player"]
+[connection signal="pressed" from="VBoxContainer/HBoxContainer/BackButton" to="." method="_on_back_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/HBoxContainer/PlayButton" to="VBoxContainer/HBoxContainer2/Players" method="_on_play_button_pressed"]

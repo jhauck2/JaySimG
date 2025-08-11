@@ -7,7 +7,7 @@ func _ready() -> void:
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	pass
 
 
@@ -16,7 +16,7 @@ func _on_range_pressed() -> void:
 
 
 func _on_courses_pressed() -> void:
-	pass # Replace with function body.
+	SceneManager.change_scene("res://Courses/CourseSelector/course_selector.tscn")
 
 
 func _on_settings_pressed() -> void:
